@@ -6,6 +6,7 @@ const LOGO_CLASSIC = `${STATIC}/fk-p-linchpin-web/fk-cp-zion/img/flipkart-plus_8
 const LOGO_PLUS = `${STATIC}/fk-p-linchpin-web/fk-cp-zion/img/plus_aef861.png`;
 const ASSURED = `${STATIC}/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png`;
 const CART_ICON = `${STATIC}/batman-returns/batman-returns/p/images/header_cart_v4-6ac9a8.svg`;
+const USER_ICON = `${STATIC}/batman-returns/batman-returns/p/images/profile-52e0dc.svg`;
 
 const CATEGORIES = [
   { id: "for-you", name: "For You", icon: `${STATIC}/apex-static/images/svgs/L1Nav/all.svg` },

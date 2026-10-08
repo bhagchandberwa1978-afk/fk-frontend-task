@@ -118,10 +118,13 @@
   }
 
   function iconUser() {
-    return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M5 19c1.2-3.2 3.8-5 7-5s5.8 1.8 7 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>`;
+    return `<img class="ico hdr-ico" src="${USER_ICON}" alt="" />`;
   }
   function iconCart() {
-    return `<svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M6 7h15l-1.5 8.5H8L6 7Z" stroke="currentColor" stroke-width="1.6"/><path d="M6 7 5 4H2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="9" cy="20" r="1.4" fill="currentColor"/><circle cx="17" cy="20" r="1.4" fill="currentColor"/></svg>`;
+    return `<img class="ico hdr-ico" src="${CART_ICON}" alt="" />`;
+  }
+  function iconSearch() {
+    return `<svg class="ico" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="6.2" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;
   }
 
   function headerNew(q) {
@@ -131,11 +134,11 @@
         ${logoLink()}
         <form class="search-wrap" data-search>
           <input name="q" value="${esc(q || "")}" placeholder="Search for Products, Brands and More" autocomplete="off" />
-          <button class="s-btn" type="submit" aria-label="Search">🔍</button>
+          <button class="s-btn" type="submit" aria-label="Search">${iconSearch()}</button>
           <div class="suggest" hidden></div>
         </form>
         <div class="hdr-actions">
-          <button class="hdr-link" data-login>${iconUser()} Login</button>
+          <button class="hdr-link" data-login>${iconUser()} <span>Login</span></button>
           <a class="hdr-link hide-sm" href="/listing?q=mobiles">More ▾</a>
           <a class="hdr-link" href="/cart">${iconCart()} Cart ${cartCount() ? `<span class="badge">${cartCount()}</span>` : ""}</a>
         </div>
@@ -156,7 +159,7 @@
         </a>
         <form class="search-wrap" data-search>
           <input name="q" value="${esc(q || "")}" placeholder="Search for products, brands and more" autocomplete="off" />
-          <button class="s-btn" type="submit" aria-label="Search">🔍</button>
+          <button class="s-btn" type="submit" aria-label="Search">${iconSearch()}</button>
           <div class="suggest" hidden></div>
         </form>
         <button class="login-btn-white hide-sm" data-login>Login</button>
@@ -546,7 +549,7 @@
           <div class="offer-box">
             <b>Available offers</b>
             <p>Bank Offer 5% Cashback on Flipkart Axis Bank Card</p>
-            <p>UPI Offer Pay with ${UPI_ID}</p>
+            <p>UPI Offer 5% instant discount on UPI payments</p>
             <p>Special Price Extra ${off}% off on this sale</p>
           </div>
           <div class="exch-row">Exchange offer · Up to ${inr(Math.round(p.price * 0.4))}</div>
@@ -709,14 +712,15 @@
             ? `<section class="fk-card">
             <h3 class="fk-h">DELIVERY ADDRESS</h3>
             <div class="addr-form">
+              <button type="button" class="btn-loc" id="useLoc">📍 Use my current location</button>
               <div class="addr-grid">
-                <input class="inp addr-span" id="addrName" placeholder="Name" value="" />
-                <input class="inp addr-span" id="addrPhone" placeholder="10-digit mobile number" value="" />
-                <input class="inp" id="addrPin" placeholder="Pincode" value="" />
-                <input class="inp" id="addrLocality" placeholder="Locality" value="" />
-                <input class="inp addr-span" id="addrLine" placeholder="Address (Area and Street)" value="" />
-                <input class="inp" id="addrCity" placeholder="City / District / Town" value="" />
-                <input class="inp" id="addrState" placeholder="State" value="" />
+                <input class="inp addr-span" id="addrName" name="name" autocomplete="name" placeholder="Name" value="${esc(a.name)}" />
+                <input class="inp addr-span" id="addrPhone" name="tel" autocomplete="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" value="${esc(a.phone)}" />
+                <input class="inp" id="addrPin" name="postal-code" autocomplete="postal-code" inputmode="numeric" maxlength="6" placeholder="Pincode" value="${esc(a.pincode)}" />
+                <input class="inp" id="addrLocality" autocomplete="address-level3" placeholder="Locality" value="" />
+                <input class="inp addr-span" id="addrLine" name="street-address" autocomplete="street-address" placeholder="Address (Area and Street)" value="${esc(a.line)}" />
+                <input class="inp" id="addrCity" autocomplete="address-level2" placeholder="City / District / Town" value="${esc(a.city)}" />
+                <input class="inp" id="addrState" autocomplete="address-level1" placeholder="State" value="${esc(a.state)}" />
               </div>
             </div>
             <p class="eta-hint">Estimated delivery: <b>${deliveryEta()}</b></p>
@@ -1088,6 +1092,46 @@
         };
         state.chkStep = 2;
         render();
+      });
+    }
+    const useLoc = document.getElementById("useLoc");
+    if (useLoc) {
+      useLoc.addEventListener("click", () => {
+        if (!navigator.geolocation) return toast("Location is browser me available nahi");
+        useLoc.textContent = "📍 Detecting location…";
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const lat = pos.coords.latitude;
+            const lon = pos.coords.longitude;
+            fetch("https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" + lat + "&lon=" + lon, {
+              headers: { Accept: "application/json" }
+            })
+              .then((r) => r.json())
+              .then((d) => {
+                const a = d.address || {};
+                const set = (id, v) => {
+                  const el = document.getElementById(id);
+                  if (el && v) el.value = v;
+                };
+                set("addrPin", a.postcode);
+                set("addrCity", a.city || a.town || a.district || a.county);
+                set("addrState", a.state);
+                set("addrLocality", a.suburb || a.neighbourhood || a.village || a.locality);
+                const road = [a.house_number, a.road, a.suburb].filter(Boolean).join(", ");
+                set("addrLine", road);
+                useLoc.textContent = "📍 Use my current location";
+                toast("Address fill ho gaya");
+              })
+              .catch(() => {
+                useLoc.textContent = "📍 Use my current location";
+                toast("Address nahi mila, khud bharein");
+              });
+          },
+          () => {
+            useLoc.textContent = "📍 Use my current location";
+            toast("Location allow karo");
+          }
+        );
       });
     }
     const continueOrder = document.getElementById("continueOrder");
