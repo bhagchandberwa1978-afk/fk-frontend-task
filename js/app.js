@@ -724,7 +724,7 @@
               </div>
             </div>
             <p class="eta-hint">Estimated delivery: <b>${deliveryEta()}</b></p>
-            <button type="button" class="btn-deliver" id="deliverHere">Continue</button>
+            <div class="chk-cta"><button type="button" class="btn-deliver" id="deliverHere">Continue</button></div>
           </section>`
             : ""
         }
@@ -757,7 +757,7 @@
               .join("")}
             <div class="fk-row">🚚 Delivery by <b>${deliveryEta()}</b> · Estimated in 5 days</div>
             <div class="fk-row">📦 Open Box Delivery will be done ›</div>
-            <button type="button" class="btn-deliver" id="continueOrder">Continue</button>
+            <div class="chk-cta"><button type="button" class="btn-deliver" id="continueOrder">Continue</button></div>
           </section>`
             : ""
         }

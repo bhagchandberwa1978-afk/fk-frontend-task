@@ -551,7 +551,9 @@ img { max-width: 100%; display: block; }
 .chk-prog-line { width: 28px; height: 2px; background: #e0e0e0; border-radius: 2px; }
 .chk-prog-line.on { background: #2874f0; }
 .chk-shell {
-  max-width: 480px; margin: 0 auto; padding: 8px 0 40px;
+  max-width: 480px; width: 100%; margin: 0 auto;
+  padding: 8px 12px 16px;
+  overflow-x: hidden;
 }
 .fk-card {
   background: #fff; border-radius: 0; padding: 16px 12px;
@@ -570,10 +572,18 @@ img { max-width: 100%; display: block; }
 .addr-ph { color: #111 !important; }
 .link-blue { color: #2874f0; background: none; border: 0; font-weight: 700; cursor: pointer; font-size: 13px; }
 .grow { flex: 1; }
+.chk-cta {
+  position: sticky; bottom: 0; z-index: 20;
+  margin: 12px -12px 0;
+  padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+  background: #fff;
+  box-shadow: 0 -4px 16px #00000014;
+}
 .btn-deliver, .btn-pay-yellow {
-  display: block; width: 100%; border: 0; border-radius: 12px;
+  display: block; width: 100%; max-width: 100%;
+  box-sizing: border-box; border: 0; border-radius: 8px;
   padding: 14px 16px; font-weight: 800; font-size: 16px;
-  cursor: pointer; text-align: center; margin-top: 8px;
+  cursor: pointer; text-align: center; margin: 0;
 }
 .btn-deliver { background: #2874f0; color: #fff; }
 .btn-pay-yellow { background: #ffe500; color: #111; border-radius: 24px; }
@@ -596,13 +606,14 @@ img { max-width: 100%; display: block; }
   font-weight: 700; font-size: 14px; padding: 12px; border-radius: 2px;
   cursor: pointer; margin-bottom: 14px;
 }
-.btn-deliver { border-radius: 2px; }
 .fk-row {
-  background: #fff; border-radius: 16px; padding: 14px;
+  background: #fff; border-radius: 12px; padding: 14px;
   margin-bottom: 10px; font-size: 14px; box-shadow: 0 1px 4px #0000000d;
+  max-width: 100%; overflow-wrap: anywhere;
 }
 .fk-row.coins { display: flex; justify-content: space-between; color: #878787; }
-.prod-sum { display: grid; grid-template-columns: 88px 1fr; gap: 12px; }
+.prod-sum { display: grid; grid-template-columns: 88px minmax(0, 1fr); gap: 12px; min-width: 0; }
+.prod-sum > div { min-width: 0; overflow-wrap: anywhere; }
 .prod-sum img { width: 88px; height: 88px; object-fit: contain; }
 .green-sm { color: #388e3c; font-size: 12px; font-weight: 700; margin-bottom: 4px; }
 .prod-sum a { font-size: 14px; font-weight: 600; display: block; }
