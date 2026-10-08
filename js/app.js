@@ -33,12 +33,12 @@
     checkoutItems: JSON.parse(sessionStorage.getItem("fk-checkout") || "[]"),
     checkoutMode: sessionStorage.getItem("fk-checkout-mode") || "buynow",
     address: {
-      name: "Test User",
-      phone: "9999999999",
-      pincode: "560103",
-      line: "Buildings Alyssa, Embassy Tech Village",
-      city: "Bengaluru",
-      state: "Karnataka",
+      name: "",
+      phone: "",
+      pincode: "",
+      line: "",
+      city: "",
+      state: "",
       type: "HOME"
     }
   };
@@ -497,6 +497,7 @@
     const gi = Math.min(state.gallery, imgs.length - 1);
     const off = discount(p);
     const emi = Math.round(p.price / 3);
+    const emiM = Math.round(p.price / 12);
     const lowest = Math.round(p.price * 0.8);
     const colors = p.colors && p.colors.length ? p.colors : [{ name: p.color || "Default", img: p.img, id: p.id }];
     const variants = p.variants || [{ label: [p.ram, p.rom].filter(Boolean).join(" + ") || "Standard", price: p.price, stock: 6 }];
@@ -516,10 +517,6 @@
               ${p.bestseller ? `<span class="best-pill">BESTSELLER</span>` : ""}
               <img src="${imgs[gi]}" alt="${esc(p.name)}" />
             </div>
-          </div>
-          <div class="cta-row sticky-cta">
-            <button class="btn btn-cart" data-add="${p.id}" data-offer="${p.bbd ? "bbd" : ""}">ADD TO CART</button>
-            <button class="btn btn-buy-now" data-buy="${p.id}" data-offer="${p.bbd ? "bbd" : ""}">Buy now</button>
           </div>
         </div>
         <div class="prod-right">
@@ -571,6 +568,17 @@
             <tr><th>Warranty</th><td>${esc(p.warranty || "Brand warranty")}</td></tr>
           </table>
         </div>
+      </div>
+      <div class="sticky-cta">
+        <button class="cta-cart" type="button" data-add="${p.id}" data-offer="${p.bbd ? "bbd" : ""}" aria-label="Add to cart">${iconCart()}</button>
+        <button class="cta-emi" type="button" data-buy="${p.id}" data-offer="${p.bbd ? "bbd" : ""}">
+          <b>Buy with EMI</b>
+          <small>From ${inr(emiM)}/m</small>
+        </button>
+        <button class="cta-buynow" type="button" data-buy="${p.id}" data-offer="${p.bbd ? "bbd" : ""}">
+          <b>Buy now</b>
+          <small>at ${inr(p.price)}</small>
+        </button>
       </div>
       ${footer()}${loginModal()}`;
   }
@@ -700,14 +708,6 @@
           step === 1
             ? `<section class="fk-card">
             <h3 class="fk-h">DELIVERY ADDRESS</h3>
-            <div class="addr-app">
-              <div class="addr-ico">🏠</div>
-              <div>
-                <div class="addr-name">${esc(a.name)} <span class="addr-tag">${esc(a.type)}</span></div>
-                <p>${esc(a.line)}, ${esc(a.city)}, ${esc(a.state)} - ${esc(a.pincode)}</p>
-                <p class="addr-ph">📞 ${esc(a.phone)}</p>
-              </div>
-            </div>
             <div class="addr-form">
               <div class="addr-grid">
                 <input class="inp addr-span" id="addrName" placeholder="Name" value="" />
@@ -875,11 +875,6 @@
           <a href="/listing?q=mobiles"><img class="bbd-hero" id="bbdHero" src="${[BBD_HERO].concat(BANNERS)[state.banner % (BANNERS.length + 1)]}" alt="The Big Billion Days" /></a>
           <div class="banner-dots">${[BBD_HERO].concat(BANNERS).map((_, i) => `<span class="${i === state.banner % (BANNERS.length + 1) ? "on" : ""}" data-dot="${i}"></span>`).join("")}</div>
         </div>
-        <h2 class="bbd-h">Shop by category</h2>
-        <p class="bbd-sub">Associate sponsors</p>
-        <div class="bbd-cats">
-          ${BBD_TILES.map((t) => `<a class="bbd-cat" href="/listing?q=${t.q}"><img src="${t.img}" alt="${t.title}" /><span>${t.title}</span></a>`).join("")}
-        </div>
         ${bbdDealRow("Mobile Deals", ["moto-g37-power-blue", "oppo-k14x", "oppo-k14", "boltt-ace-lavender", "realme-p4", "samsung-f07", "pixel-11", "redmi-a7"])}
         ${bbdDealRow("BBD Specials", ["iphone-17-black", "oppo-k14", "lava-virat", "headphones-boat", "watch-noise"])}
         ${bbdDealRow("Electronics", ["laptop-asus", "tv-samsung", "headphones-boat", "watch-noise"])}
@@ -897,6 +892,11 @@
           </a>`
             )
             .join("")}
+        </div>
+        <h2 class="bbd-h">Shop by category</h2>
+        <p class="bbd-sub">Associate sponsors</p>
+        <div class="bbd-cats">
+          ${BBD_TILES.map((t) => `<a class="bbd-cat" href="/listing?q=${t.q}"><img src="${t.img}" alt="${t.title}" /><span>${t.title}</span></a>`).join("")}
         </div>
         <h2 class="bbd-h">More about Big Billion Days</h2>
         <div class="bbd-faq">
@@ -1061,18 +1061,31 @@
     const deliverHere = document.getElementById("deliverHere");
     if (deliverHere) {
       deliverHere.addEventListener("click", () => {
-        const name = document.getElementById("addrName");
-        if (name) {
-          state.address = {
-            name: name.value.trim() || state.address.name,
-            phone: document.getElementById("addrPhone").value.trim() || state.address.phone,
-            pincode: document.getElementById("addrPin").value.trim() || state.address.pincode,
-            city: document.getElementById("addrCity").value.trim() || state.address.city,
-            line: document.getElementById("addrLine").value.trim() || state.address.line,
-            state: document.getElementById("addrState").value.trim() || state.address.state,
-            type: state.address.type
-          };
+        const val = (id) => ((document.getElementById(id) || { value: "" }).value || "").trim();
+        const name = val("addrName");
+        const phone = val("addrPhone");
+        const pincode = val("addrPin");
+        const locality = val("addrLocality");
+        const line = val("addrLine");
+        const city = val("addrCity");
+        const st = val("addrState");
+        if (!name || !phone || !pincode || !line || !city || !st) {
+          toast("Apna naam, phone aur address bharein");
+          return;
         }
+        if (!/^[0-9]{10}$/.test(phone)) {
+          toast("10 digit mobile number daalein");
+          return;
+        }
+        state.address = {
+          name,
+          phone,
+          pincode,
+          city,
+          line: locality ? line + ", " + locality : line,
+          state: st,
+          type: "HOME"
+        };
         state.chkStep = 2;
         render();
       });
