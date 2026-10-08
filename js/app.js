@@ -159,10 +159,11 @@
           <button class="s-btn" type="submit" aria-label="Search">🔍</button>
           <div class="suggest" hidden></div>
         </form>
-        <button class="login-btn-white" data-login>Login</button>
+        <button class="login-btn-white hide-sm" data-login>Login</button>
+        <button class="hdr-link mobile-only" data-login>${iconUser()}</button>
         <a class="hdr-link hide-sm" href="/">Become a Seller</a>
         <a class="hdr-link hide-sm" href="/">More ▾</a>
-        <a class="hdr-link" href="/cart">${iconCart()} Cart ${cartCount() ? `(${cartCount()})` : ""}</a>
+        <a class="hdr-link" href="/cart">${iconCart()} <span class="hide-sm">Cart</span> ${cartCount() ? `<span class="badge">${cartCount()}</span>` : ""}</a>
       </div>
       <nav class="subnav">
         <a href="/listing?q=electronics">Electronics ▾</a>
@@ -366,7 +367,7 @@
       ${headerClassic(q)}
       <div class="listing-wrap">
         <aside class="filters" id="filters">
-          <h4>Filters</h4>
+          <div class="filters-head"><h4>Filters</h4><button type="button" id="closeFilters" aria-label="Close">✕</button></div>
           <div class="f-sec">
             <h5>CATEGORIES</h5>
             <a href="/listing?q=mobiles">Mobiles & Accessories</a><br>
@@ -431,7 +432,11 @@
           ${list.map(row).join("") || `<div class="empty">No products found</div>`}
         </section>
       </div>
-      <div class="filter-toggle"><button id="openFilters">Filters</button></div>
+      <div class="filter-scrim" id="filterScrim"></div>
+      <div class="filter-toggle">
+        <button type="button" id="jumpSort">Sort</button>
+        <button type="button" id="openFilters">Filters</button>
+      </div>
       ${footer()}${loginModal()}`;
   }
 
@@ -1199,10 +1204,23 @@
         document.querySelectorAll("[data-dot]").forEach((d) => d.classList.toggle("on", Number(d.getAttribute("data-dot")) === state.banner));
       });
     });
+    const filtersEl = document.getElementById("filters");
+    const scrim = document.getElementById("filterScrim");
+    const setFilters = (on) => {
+      if (!filtersEl) return;
+      filtersEl.classList.toggle("open", on);
+      if (scrim) scrim.classList.toggle("open", on);
+    };
     const of = document.getElementById("openFilters");
-    if (of) {
-      of.addEventListener("click", () => {
-        document.getElementById("filters").classList.toggle("open");
+    if (of) of.addEventListener("click", () => setFilters(true));
+    const cf = document.getElementById("closeFilters");
+    if (cf) cf.addEventListener("click", () => setFilters(false));
+    if (scrim) scrim.addEventListener("click", () => setFilters(false));
+    const js = document.getElementById("jumpSort");
+    if (js) {
+      js.addEventListener("click", () => {
+        const bar = document.querySelector(".sort-bar");
+        if (bar) bar.scrollIntoView({ behavior: "smooth", block: "start" });
       });
     }
   }
