@@ -39,6 +39,7 @@
       name: "",
       phone: "",
       pincode: "",
+      locality: "",
       line: "",
       city: "",
       state: "",
@@ -702,15 +703,15 @@
             <div class="addr-form">
               <button type="button" class="btn-loc" id="useLoc">📍 Use my current location</button>
               <div class="addr-grid">
-                <input class="inp addr-span" id="addrName" name="name" autocomplete="name" placeholder="Name" value="${esc(a.name)}" />
-                <input class="inp addr-span" id="addrPhone" name="tel" autocomplete="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" value="${esc(a.phone)}" />
-                <input class="inp" id="addrPin" name="postal-code" autocomplete="postal-code" inputmode="numeric" maxlength="6" placeholder="Pincode" value="${esc(a.pincode)}" />
-                <input class="inp" id="addrLocality" autocomplete="address-level3" placeholder="Locality" value="" />
-                <input class="inp addr-span" id="addrLine" name="street-address" autocomplete="street-address" placeholder="Address (Area and Street)" value="${esc(a.line)}" />
-                <input class="inp" id="addrCity" autocomplete="address-level2" placeholder="City / District / Town" value="${esc(a.city)}" />
-                <input class="inp" id="addrState" autocomplete="address-level1" placeholder="State" value="${esc(a.state)}" />
+                <input class="inp addr-span" id="addrName" name="name" autocomplete="name" placeholder="Name *" required value="${esc(a.name)}" />
+                <input class="inp addr-span" id="addrPhone" name="tel" autocomplete="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number *" required value="${esc(a.phone)}" />
+                <input class="inp" id="addrPin" name="postal-code" autocomplete="postal-code" inputmode="numeric" maxlength="6" placeholder="Pincode *" required value="${esc(a.pincode)}" />
+                <input class="inp" id="addrLocality" autocomplete="address-level3" placeholder="Locality *" required value="${esc(a.locality)}" />
+                <input class="inp addr-span" id="addrLine" name="street-address" autocomplete="street-address" placeholder="Address (Area and Street) *" required value="${esc(a.line)}" />
+                <input class="inp" id="addrCity" autocomplete="address-level2" placeholder="City / District / Town *" required value="${esc(a.city)}" />
+                <input class="inp" id="addrState" autocomplete="address-level1" placeholder="State *" required value="${esc(a.state)}" />
               </div>
-              <p class="muted">Address details are optional for this demo checkout.</p>
+              <p class="muted">All fields are required.</p>
             </div>
             <p class="eta-hint">Estimated delivery: <b>${deliveryEta()}</b></p>
             <div class="chk-cta"><button type="button" class="btn-deliver" id="deliverHere">Continue</button></div>
@@ -726,7 +727,7 @@
               <div class="addr-ico">🏠</div>
               <div class="grow">
                 <div class="addr-name">${a.name ? esc(a.name) : "Guest checkout"} <button type="button" class="link-blue" data-chk-step="1">Change</button></div>
-                <p>${[a.line, a.city, a.state, a.pincode].filter(Boolean).map(esc).join(", ") || "No delivery address provided."}</p>
+                <p>${[a.line, a.locality, a.city, a.state, a.pincode].filter(Boolean).map(esc).join(", ") || "No delivery address provided."}</p>
                 ${a.phone ? `<p class="addr-ph">📞 ${esc(a.phone)}</p>` : ""}
               </div>
             </div>
@@ -1036,12 +1037,28 @@
         const line = val("addrLine");
         const city = val("addrCity");
         const st = val("addrState");
+        const checks = [
+          ["addrName", name.length >= 2, "Please enter your name"],
+          ["addrPhone", /^[6-9]\d{9}$/.test(phone), "Please enter a valid 10-digit mobile number"],
+          ["addrPin", /^[1-9]\d{5}$/.test(pincode), "Please enter a valid 6-digit pincode"],
+          ["addrLocality", !!locality, "Please enter your locality"],
+          ["addrLine", !!line, "Please enter your address"],
+          ["addrCity", !!city, "Please enter your city"],
+          ["addrState", !!st, "Please enter your state"]
+        ];
+        checks.forEach(([id, ok]) => document.getElementById(id).classList.toggle("inp-err", !ok));
+        const firstBad = checks.find(([, ok]) => !ok);
+        if (firstBad) {
+          document.getElementById(firstBad[0]).focus();
+          return toast(firstBad[2]);
+        }
         state.address = {
           name,
           phone,
           pincode,
+          locality,
           city,
-          line: locality ? line + ", " + locality : line,
+          line,
           state: st,
           type: "HOME"
         };

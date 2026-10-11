@@ -624,6 +624,7 @@ img { max-width: 100%; display: block; }
   box-shadow: none;
 }
 .inp::placeholder { color: #878787; }
+.inp.inp-err { border-color: #ff6161; }
 .btn-loc {
   width: 100%; border: 1px dashed #2874f0; background: #f5faff; color: #2874f0;
   font-weight: 700; font-size: 14px; padding: 12px; border-radius: 2px;
