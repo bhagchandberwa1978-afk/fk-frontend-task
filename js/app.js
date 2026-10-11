@@ -527,7 +527,7 @@
             .join("")}</div>
           <h1>${esc(p.name)}${p.ram ? ` (${esc(p.ram)} RAM)` : ""}</h1>
           <div class="rate-line"><span class="rating">${p.rating} ★</span><span class="rc">${countLabel(p.ratingCount)} Ratings & ${countLabel(p.reviews || 0)} Reviews</span></div>
-          <div class="bbd-price-lbl">Big Billion Days Price · 50% off</div>
+          <div class="bbd-price-lbl">Big Billion Days Price · ${off}% off</div>
           <div class="price-block">
             ${p.mrp ? `<span class="off">${off}%</span> <span class="was">${inr(p.mrp)}</span>` : ""}
             <div class="price-lg">${inr(p.price)}</div>
@@ -843,29 +843,6 @@
       </span>`;
   }
 
-  function bbdDealRow(title, ids) {
-    const list = ids
-      .map((id) => ALL.find((x) => x.id === id))
-      .filter(Boolean)
-      .map(saleWrap);
-    if (!list.length) return "";
-    return `
-      <h2 class="bbd-h">${esc(title)}</h2>
-      <div class="bbd-grid">
-        ${list
-          .map(
-            (p) => `<a class="bbd-card" href="/product/${p.id}?offer=bbd">
-          <span class="off-pill">${discount(p)}% off</span>
-          <img src="${p.img}" alt="${esc(p.name)}" />
-          <div class="n">${esc(p.name)}</div>
-          ${p.rating ? `<div class="bbd-rating"><span>${Number(p.rating).toFixed(1)} ★</span> ${countLabel(p.ratingCount || 0)}</div>` : ""}
-          <div class="price-row"><span class="now">${inr(p.price)}</span><span class="was">${inr(p.mrp)}</span></div>
-        </a>`
-          )
-          .join("")}
-      </div>`;
-  }
-
   function bbdView() {
     return `
       ${headerNew("")}
@@ -875,15 +852,7 @@
           <a href="/listing?q=mobiles"><img class="bbd-hero" id="bbdHero" src="${[BBD_HERO].concat(BANNERS)[state.banner % (BANNERS.length + 1)]}" alt="The Big Billion Days" /></a>
           <div class="banner-dots">${[BBD_HERO].concat(BANNERS).map((_, i) => `<span class="${i === state.banner % (BANNERS.length + 1) ? "on" : ""}" data-dot="${i}"></span>`).join("")}</div>
         </div>
-        ${bbdDealRow("Mobile Deals", ["moto-g37-power-blue", "oppo-k14x", "oppo-k14", "boltt-ace-lavender", "realme-p4", "samsung-f07", "pixel-11", "redmi-a7"])}
-        ${bbdDealRow("BBD Specials", ["iphone-17-black", "oppo-k14", "lava-virat", "headphones-boat", "watch-noise"])}
-        ${bbdDealRow("Electronics", ["laptop-asus", "tv-samsung", "headphones-boat", "watch-noise"])}
-        ${bbdDealRow("Men's Shirts Under ₹500", ["pe-shirt-blue", "pe-shirt-white", "vd-shirt-blue", "vd-shirt-pink", "arrow-shirt", "levis-shirt"])}
-        ${bbdDealRow("Women's Ethnic Wear Under ₹500", ["libas-kurta-combo", "vaaneep-kurta-combo", "shefair-kurta-combo", "sari-1"])}
-        ${bbdDealRow("More Fashion Deals", ["wrogn-jeans", "lzard-jeans", "kids-combo"])}
-        ${bbdDealRow("Home Deals", ["cooker-1", "bedsheet-1", "food-1"])}
-        ${bbdDealRow("Furniture Deals", ["sofa-1"])}
-        <h2 class="bbd-h">Top deals</h2>
+        <h2 class="bbd-h">All deals <span class="bbd-count">${ALL.length} products</span></h2>
         <div class="bbd-grid">
           ${ALL.map(saleWrap)
             .map(
@@ -896,16 +865,6 @@
           </a>`
             )
             .join("")}
-        </div>
-        <h2 class="bbd-h">Shop by category</h2>
-        <p class="bbd-sub">Explore deals across popular categories</p>
-        <div class="bbd-cats">
-          ${BBD_TILES.map((t) => `<a class="bbd-cat" href="/listing?q=${t.q}"><img src="${t.img}" alt="${t.title}" /><span>${t.title}</span></a>`).join("")}
-        </div>
-        <h2 class="bbd-h">More about Big Billion Days</h2>
-        <div class="bbd-faq">
-          <p><b>How long are today's deals available?</b> Your 10-minute deal timer starts when you open this page and stays active for this browser tab session.</p>
-          <p><b>What deals can I find?</b> Browse mobiles, electronics, fashion, home, furniture and more from the product catalog.</p>
         </div>
       </div>
       ${footer()}${loginModal()}`;

@@ -95,19 +95,15 @@ img { max-width: 100%; display: block; }
 .sale-timer-unit b { font-size: 17px; font-variant-numeric: tabular-nums; }
 .sale-timer-unit small { color: #e4dcff; font-size: 9px; font-weight: 700; }
 .sale-timer-separator { color: #d5c6ff; font-size: 16px; }
-.bbd-faq {
-  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;
-  margin-top: 10px;
-}
-.bbd-faq p {
-  background: #fff; border-radius: 10px; padding: 14px;
-  color: #555; font-size: 13px; line-height: 1.55;
-}
-.bbd-faq b { display: block; color: #212121; margin-bottom: 4px; }
 .bbd-h { display: flex; align-items: center; gap: 10px; }
 .bbd-h::after { content: ""; height: 1px; flex: 1; background: #ddd; }
-.bbd-cat, .bbd-card { transition: box-shadow .18s ease, transform .18s ease; }
-.bbd-cat:hover, .bbd-card:hover {
+.bbd-count {
+  color: #878787; font-size: 12px; font-weight: 500;
+  white-space: nowrap; order: 1;
+}
+.bbd-h::after { order: 2; }
+.bbd-card { transition: box-shadow .18s ease, transform .18s ease; }
+.bbd-card:hover {
   transform: translateY(-2px); box-shadow: 0 8px 22px #21105f1c;
 }
 .bbd-hero-wrap { position: relative; margin-bottom: 8px; }
@@ -118,18 +114,6 @@ img { max-width: 100%; display: block; }
 }
 .bbd-hero-wrap .banner-dots { bottom: 14px; }
 .bbd-h { margin: 18px 0 6px; font-size: 20px; }
-.bbd-sub { font-size: 14px; color: #41414e; font-weight: 600; margin: 0 0 10px; }
-.bbd-cats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
-}
-.bbd-cat {
-  background: #fff; border-radius: 12px; text-align: center; padding: 12px 8px 10px;
-  font-weight: 600; font-size: 13px; overflow: hidden;
-}
-.bbd-cat img {
-  height: 92px; width: 100%; object-fit: contain;
-  object-position: center 70%; margin: 0 auto 8px;
-}
 .bbd-grid {
   display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
 }
@@ -803,7 +787,6 @@ img { max-width: 100%; display: block; }
   .classic-logo .explore { display: none; }
   .bbd-page { padding: 8px 8px 80px; }
   .bbd-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
-  .bbd-cats { grid-template-columns: repeat(2, 1fr); }
   .page { padding: 8px; }
   .subnav { justify-content: flex-start; gap: 14px; padding: 8px 12px; }
 }
@@ -822,11 +805,9 @@ img { max-width: 100%; display: block; }
   .menu-btn { display: inline-block; color: inherit; }
   .ft-grid { grid-template-columns: 1fr 1fr; }
   .bbd-card img { height: 110px; }
-  .bbd-cat img { height: 72px; }
   .sale-timer { gap: 8px; padding: 10px 8px; }
   .sale-timer-label { flex-basis: 100%; text-align: center; }
   .sale-timer-unit { min-width: 48px; padding: 5px; }
-  .bbd-faq { grid-template-columns: 1fr; }
   .addr-grid { grid-template-columns: 1fr; }
   .chk-page { padding: 8px 8px 24px; }
   .spec-table th { width: 110px; }

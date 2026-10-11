@@ -26,16 +26,6 @@ const CATEGORIES = [
 ];
 
 const BBD_HERO = "https://rukminim1.flixcart.com/fk-p-flap/1262/898/image/908d7e7ac6972a3c.jpg?q=80";
-const BBD_TILES = [
-  { title: "Mobiles", img: "https://rukminim1.flixcart.com/fk-p-flap/240/270/image/7d8a9be41bb84273.png?q=80", q: "mobiles" },
-  { title: "Electronics", img: "https://rukminim1.flixcart.com/fk-p-flap/240/270/image/2062deddf1c71d28.png?q=80", q: "electronics" },
-  { title: "TVs & Appliances", img: "https://rukminim1.flixcart.com/fk-p-flap/240/270/image/952a4f2ac4e35b65.png?q=80", q: "appliances" },
-  { title: "Fashion", img: "https://rukminim1.flixcart.com/fk-p-flap/240/270/image/bb6b4e0f1f1742ba.png?q=80", q: "fashion" },
-  { title: "Beauty", img: "https://rukminim1.flixcart.com/fk-p-flap/240/270/image/cc9ffa84ba07ad69.png?q=80", q: "beauty" },
-  { title: "Home", img: "https://rukminim1.flixcart.com/fk-p-flap/240/240/image/9e3d4729e9e9bae3.png?q=80", q: "home" },
-  { title: "Furniture", img: "https://rukminim1.flixcart.com/fk-p-flap/240/240/image/5301072c58a4aeda.png?q=80", q: "furniture" },
-  { title: "Books", img: "https://rukminim1.flixcart.com/fk-p-flap/240/240/image/ce7bbd890aba0810.png?q=80", q: "books" }
-];
 
 const BANNERS = [
   `${IMG}/fk-p-flap/1600/780/image/ff8ef079b2a8e60f.jpg?q=80`,
