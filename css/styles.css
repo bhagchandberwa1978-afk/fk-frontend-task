@@ -67,13 +67,48 @@ img { max-width: 100%; display: block; }
 .sug-item img { width: 40px; height: 40px; object-fit: contain; }
 .sug-item small { display: block; color: #878787; }
 .bbd-strip {
-  display: block; text-align: center; background: #1a237e; color: #ffe500;
-  font-weight: 700; padding: 10px; border-radius: 8px; margin-bottom: 12px;
+  display: block; text-align: center; background: linear-gradient(100deg, #21105f, #4921a6);
+  color: #fff; font-weight: 700; padding: 12px; border-radius: 8px; margin-bottom: 12px;
 }
 .bbd-page { max-width: 1200px; margin: 0 auto; padding: 12px 12px 40px; }
 .sale-timer {
-  background: #eef6ff; text-align: center; padding: 12px; border-radius: 12px;
-  font-weight: 600; margin-bottom: 12px;
+  display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+  background: linear-gradient(100deg, #21105f, #4921a6); color: #fff;
+  padding: 12px 16px; border-radius: 12px; font-weight: 600; margin-bottom: 12px;
+}
+.sale-live {
+  display: inline-flex; align-items: center; gap: 7px;
+  color: #ffe500; font-size: 12px; font-weight: 800; letter-spacing: .04em;
+}
+.sale-live i {
+  width: 8px; height: 8px; border-radius: 50%; background: #47d16c;
+  box-shadow: 0 0 0 4px #47d16c33;
+}
+.sale-timer-label { font-size: 13px; }
+.sale-timer-units { display: inline-flex; align-items: center; gap: 5px; }
+.sale-timer-unit {
+  display: flex; align-items: baseline; gap: 4px;
+  min-width: 54px; justify-content: center;
+  background: #ffffff1c; border: 1px solid #ffffff2e; border-radius: 6px;
+  padding: 5px 7px;
+}
+.sale-timer-unit b { font-size: 17px; font-variant-numeric: tabular-nums; }
+.sale-timer-unit small { color: #e4dcff; font-size: 9px; font-weight: 700; }
+.sale-timer-separator { color: #d5c6ff; font-size: 16px; }
+.bbd-faq {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;
+  margin-top: 10px;
+}
+.bbd-faq p {
+  background: #fff; border-radius: 10px; padding: 14px;
+  color: #555; font-size: 13px; line-height: 1.55;
+}
+.bbd-faq b { display: block; color: #212121; margin-bottom: 4px; }
+.bbd-h { display: flex; align-items: center; gap: 10px; }
+.bbd-h::after { content: ""; height: 1px; flex: 1; background: #ddd; }
+.bbd-cat, .bbd-card { transition: box-shadow .18s ease, transform .18s ease; }
+.bbd-cat:hover, .bbd-card:hover {
+  transform: translateY(-2px); box-shadow: 0 8px 22px #21105f1c;
 }
 .bbd-hero-wrap { position: relative; margin-bottom: 8px; }
 .bbd-hero {
@@ -100,10 +135,15 @@ img { max-width: 100%; display: block; }
 }
 .bbd-card {
   background: #fff; border-radius: 12px; padding: 12px 10px 14px; position: relative;
-  text-align: center; overflow: hidden;
+  text-align: center; overflow: hidden; border: 1px solid #eee;
 }
 .bbd-card img { height: 140px; object-fit: contain; margin: 0 auto; }
 .bbd-card .n { font-size: 13px; height: 36px; overflow: hidden; margin-top: 6px; }
+.bbd-rating { color: #878787; font-size: 11px; margin-top: 6px; }
+.bbd-rating span {
+  display: inline-block; background: #388e3c; color: #fff; font-weight: 700;
+  border-radius: 4px; padding: 2px 5px; margin-right: 4px;
+}
 .bbd-card .price-row {
   display: flex; flex-wrap: wrap; align-items: baseline; justify-content: center;
   gap: 6px; margin-top: 6px;
@@ -374,8 +414,6 @@ img { max-width: 100%; display: block; }
 .spec-table { width: 100%; border-collapse: collapse; font-size: 13px; }
 .spec-table th { text-align: left; width: 140px; color: #878787; font-weight: 500; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
 .spec-table td { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
-.bbd-faq { background: #fff; border-radius: 12px; padding: 16px; }
-.bbd-faq p { margin: 10px 0; font-size: 14px; line-height: 1.5; }
 .colors, .variants { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 14px; }
 .color-opt {
   width: 56px; height: 72px; border: 1px solid #e0e0e0; border-radius: 8px;
@@ -785,6 +823,10 @@ img { max-width: 100%; display: block; }
   .ft-grid { grid-template-columns: 1fr 1fr; }
   .bbd-card img { height: 110px; }
   .bbd-cat img { height: 72px; }
+  .sale-timer { gap: 8px; padding: 10px 8px; }
+  .sale-timer-label { flex-basis: 100%; text-align: center; }
+  .sale-timer-unit { min-width: 48px; padding: 5px; }
+  .bbd-faq { grid-template-columns: 1fr; }
   .addr-grid { grid-template-columns: 1fr; }
   .chk-page { padding: 8px 8px 24px; }
   .spec-table th { width: 110px; }

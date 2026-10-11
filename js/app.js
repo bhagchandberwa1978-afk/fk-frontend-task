@@ -22,6 +22,8 @@
     max: Infinity,
     sort: "relevance",
     banner: 0,
+    bbdActive: false,
+    bbdTimerEnd: 0,
     cart: JSON.parse(localStorage.getItem("fk-cart") || "[]"),
     loginOpen: false,
     gallery: 0,
@@ -312,7 +314,7 @@
         ).join("")}
       </div>
       <div class="page">
-        <a class="bbd-strip" href="/big-billion-days-store">The Big Billion Days · Starts 9th Oct · Flat 50% Off on sale products →</a>
+        <a class="bbd-strip" href="/big-billion-days-store">The Big Billion Days · Live deals · Shop now →</a>
         <div class="hero">
           <div class="banner-main">
             <a href="/big-billion-days-store"><img id="bannerImg" src="${BANNERS[state.banner]}" alt="Big Billion Days" /></a>
@@ -326,21 +328,6 @@
             (d) => `<a class="deal" href="/listing?q=${d.query}"><img src="${d.img}" alt="${d.title}" /><div class="offer">${d.offer}</div><p>${d.title}</p></a>`
           ).join("")}
         </div>
-        ${HOME_STRIPS.map(
-          (s) => `<section class="strip">
-          <h3>${esc(s.title)}</h3>
-          <div class="product-scroll">
-            ${s.items
-              .map(
-                (it) => `<a class="mini-card" href="/big-billion-days-store">
-              <img src="${it.img}" alt="${esc(it.name)}" />
-              <div class="n">${esc(it.name)}</div>
-            </a>`
-              )
-              .join("")}
-          </div>
-        </section>`
-        ).join("")}
         <div class="quick-row">
           ${QUICK_LINKS.map((q) => `<a class="quick" href="/listing?q=electronics"><img src="${q.img}" alt="${q.name}" /><span>${q.name}</span></a>`).join("")}
         </div>
@@ -723,6 +710,7 @@
                 <input class="inp" id="addrCity" autocomplete="address-level2" placeholder="City / District / Town" value="${esc(a.city)}" />
                 <input class="inp" id="addrState" autocomplete="address-level1" placeholder="State" value="${esc(a.state)}" />
               </div>
+              <p class="muted">Address details are optional for this demo checkout.</p>
             </div>
             <p class="eta-hint">Estimated delivery: <b>${deliveryEta()}</b></p>
             <div class="chk-cta"><button type="button" class="btn-deliver" id="deliverHere">Continue</button></div>
@@ -737,9 +725,9 @@
             <div class="fk-card addr-mini">
               <div class="addr-ico">🏠</div>
               <div class="grow">
-                <div class="addr-name">${esc(a.name)} <button type="button" class="link-blue" data-chk-step="1">Change</button></div>
-                <p>${esc(a.line)}, ${esc(a.city)}, ${esc(a.state)}</p>
-                <p class="addr-ph">📞 ${esc(a.phone)}</p>
+                <div class="addr-name">${a.name ? esc(a.name) : "Guest checkout"} <button type="button" class="link-blue" data-chk-step="1">Change</button></div>
+                <p>${[a.line, a.city, a.state, a.pincode].filter(Boolean).map(esc).join(", ") || "No delivery address provided."}</p>
+                ${a.phone ? `<p class="addr-ph">📞 ${esc(a.phone)}</p>` : ""}
               </div>
             </div>
             ${items
@@ -838,15 +826,21 @@
   }
 
   function saleCountdownHtml() {
-    const start = new Date("2026-10-09T00:00:00+05:30");
     const now = new Date();
-    if (now >= start) return "Sale is LIVE · Early access for Plus members";
-    const ms = Math.max(0, start - now);
-    const h = Math.floor(ms / 3600000);
-    const m = Math.floor((ms % 3600000) / 60000);
-    const s = Math.floor((ms % 60000) / 1000);
+    if (!state.bbdTimerEnd) state.bbdTimerEnd = now.getTime() + 10 * 60 * 1000;
+    const secondsLeft = Math.max(0, Math.ceil((state.bbdTimerEnd - now.getTime()) / 1000));
+    const m = Math.floor(secondsLeft / 60);
+    const s = secondsLeft % 60;
     const pad = (n) => String(n).padStart(2, "0");
-    return `Sale starts in <b>${pad(h)}</b> Hrs : <b>${pad(m)}</b> Min : <b>${pad(s)}</b> Sec`;
+    if (!secondsLeft) return `<span class="sale-live"><i aria-hidden="true"></i> DEAL WINDOW ENDED</span>`;
+    return `
+      <span class="sale-live"><i aria-hidden="true"></i> LIVE NOW</span>
+      <span class="sale-timer-label">Your deal window ends in</span>
+      <span class="sale-timer-units" aria-label="${pad(m)} minutes ${pad(s)} seconds">
+        <span class="sale-timer-unit"><b>${pad(m)}</b><small>MIN</small></span>
+        <span class="sale-timer-separator">:</span>
+        <span class="sale-timer-unit"><b>${pad(s)}</b><small>SEC</small></span>
+      </span>`;
   }
 
   function bbdDealRow(title, ids) {
@@ -864,6 +858,7 @@
           <span class="off-pill">${discount(p)}% off</span>
           <img src="${p.img}" alt="${esc(p.name)}" />
           <div class="n">${esc(p.name)}</div>
+          ${p.rating ? `<div class="bbd-rating"><span>${Number(p.rating).toFixed(1)} ★</span> ${countLabel(p.ratingCount || 0)}</div>` : ""}
           <div class="price-row"><span class="now">${inr(p.price)}</span><span class="was">${inr(p.mrp)}</span></div>
         </a>`
           )
@@ -875,7 +870,7 @@
     return `
       ${headerNew("")}
       <div class="bbd-page">
-        <div class="sale-timer" id="saleTimer">${saleCountdownHtml()}</div>
+        <div class="sale-timer" id="saleTimer" aria-live="off">${saleCountdownHtml()}</div>
         <div class="bbd-hero-wrap">
           <a href="/listing?q=mobiles"><img class="bbd-hero" id="bbdHero" src="${[BBD_HERO].concat(BANNERS)[state.banner % (BANNERS.length + 1)]}" alt="The Big Billion Days" /></a>
           <div class="banner-dots">${[BBD_HERO].concat(BANNERS).map((_, i) => `<span class="${i === state.banner % (BANNERS.length + 1) ? "on" : ""}" data-dot="${i}"></span>`).join("")}</div>
@@ -883,6 +878,9 @@
         ${bbdDealRow("Mobile Deals", ["moto-g37-power-blue", "oppo-k14x", "oppo-k14", "boltt-ace-lavender", "realme-p4", "samsung-f07", "pixel-11", "redmi-a7"])}
         ${bbdDealRow("BBD Specials", ["iphone-17-black", "oppo-k14", "lava-virat", "headphones-boat", "watch-noise"])}
         ${bbdDealRow("Electronics", ["laptop-asus", "tv-samsung", "headphones-boat", "watch-noise"])}
+        ${bbdDealRow("Men's Shirts Under ₹500", ["pe-shirt-blue", "pe-shirt-white", "vd-shirt-blue", "vd-shirt-pink", "arrow-shirt", "levis-shirt"])}
+        ${bbdDealRow("Women's Ethnic Wear Under ₹500", ["libas-kurta-combo", "vaaneep-kurta-combo", "shefair-kurta-combo", "sari-1"])}
+        ${bbdDealRow("More Fashion Deals", ["wrogn-jeans", "lzard-jeans", "kids-combo"])}
         ${bbdDealRow("Home Deals", ["cooker-1", "bedsheet-1", "food-1"])}
         ${bbdDealRow("Furniture Deals", ["sofa-1"])}
         <h2 class="bbd-h">Top deals</h2>
@@ -893,20 +891,21 @@
             <span class="off-pill">${discount(p)}% off</span>
             <img src="${p.img}" alt="${esc(p.name)}" />
             <div class="n">${esc(p.name)}</div>
+            ${p.rating ? `<div class="bbd-rating"><span>${Number(p.rating).toFixed(1)} ★</span> ${countLabel(p.ratingCount || 0)}</div>` : ""}
             <div class="price-row"><span class="now">${inr(p.price)}</span><span class="was">${inr(p.mrp)}</span></div>
           </a>`
             )
             .join("")}
         </div>
         <h2 class="bbd-h">Shop by category</h2>
-        <p class="bbd-sub">Associate sponsors</p>
+        <p class="bbd-sub">Explore deals across popular categories</p>
         <div class="bbd-cats">
           ${BBD_TILES.map((t) => `<a class="bbd-cat" href="/listing?q=${t.q}"><img src="${t.img}" alt="${t.title}" /><span>${t.title}</span></a>`).join("")}
         </div>
         <h2 class="bbd-h">More about Big Billion Days</h2>
         <div class="bbd-faq">
-          <p><b>When does the sale start?</b> Early access 8 Oct 2026 for Plus members. General access 9 Oct 2026.</p>
-          <p><b>What deals can I expect?</b> Mobiles, electronics, fashion, home, furniture and BBD Specials with extra bank and UPI offers.</p>
+          <p><b>How long are today's deals available?</b> Your 10-minute deal timer starts when you open this page and stays active for this browser tab session.</p>
+          <p><b>What deals can I find?</b> Browse mobiles, electronics, fashion, home, furniture and more from the product catalog.</p>
         </div>
       </div>
       ${footer()}${loginModal()}`;
@@ -922,6 +921,10 @@
   function render() {
     const { parts, params } = parseRoute();
     const page = parts[0] || "home";
+    const isBbdPage = page === "big-billion-days-store";
+    if (!isBbdPage && state.bbdActive) state.bbdTimerEnd = 0;
+    if (isBbdPage && !state.bbdActive) state.bbdTimerEnd = Date.now() + 10 * 60 * 1000;
+    state.bbdActive = isBbdPage;
     state.offer = params.get("offer") || "";
     if (page === "listing") {
       state.q = params.get("q") || "mobiles";
@@ -1074,14 +1077,6 @@
         const line = val("addrLine");
         const city = val("addrCity");
         const st = val("addrState");
-        if (!name || !phone || !pincode || !line || !city || !st) {
-          toast("Apna naam, phone aur address bharein");
-          return;
-        }
-        if (!/^[0-9]{10}$/.test(phone)) {
-          toast("10 digit mobile number daalein");
-          return;
-        }
         state.address = {
           name,
           phone,

@@ -5,6 +5,7 @@ Static HTML/CSS/JS clone of [Flipkart](https://www.flipkart.com/) using Flipkart
 ## Pages
 
 - Home (`#/`) — category strip, banners, deal cards, product rows
+- Big Billion Days (`/big-billion-days-store`) — per-visit 10-minute countdown, category deals, product cards
 - Listing (`#/listing?q=mobiles`) — filters, sort, product list
 - Product (`#/product/<id>`) — gallery, variants, Add to Cart / Buy Now
 - Cart (`#/cart`)
