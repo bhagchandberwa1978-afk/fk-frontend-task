@@ -502,12 +502,12 @@
       <div class="prod-page">
         <div class="prod-left">
           <div class="gallery-new">
-            <div class="thumbs">
-              ${imgs.map((src, i) => `<img data-g="${i}" class="${i === gi ? "on" : ""}" src="${src}" alt="">`).join("")}
-            </div>
             <div class="main-shot">
               ${p.bestseller ? `<span class="best-pill">BESTSELLER</span>` : ""}
               <img src="${imgs[gi]}" alt="${esc(p.name)}" />
+            </div>
+            <div class="thumbs">
+              ${imgs.map((src, i) => `<img data-g="${i}" class="${i === gi ? "on" : ""}" src="${src}" alt="">`).join("")}
             </div>
           </div>
         </div>
@@ -703,15 +703,15 @@
             <div class="addr-form">
               <button type="button" class="btn-loc" id="useLoc">📍 Use my current location</button>
               <div class="addr-grid">
-                <input class="inp addr-span" id="addrName" name="name" autocomplete="name" placeholder="Name *" required value="${esc(a.name)}" />
-                <input class="inp addr-span" id="addrPhone" name="tel" autocomplete="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number *" required value="${esc(a.phone)}" />
-                <input class="inp" id="addrPin" name="postal-code" autocomplete="postal-code" inputmode="numeric" maxlength="6" placeholder="Pincode *" required value="${esc(a.pincode)}" />
-                <input class="inp" id="addrLocality" autocomplete="address-level3" placeholder="Locality *" required value="${esc(a.locality)}" />
-                <input class="inp addr-span" id="addrLine" name="street-address" autocomplete="street-address" placeholder="Address (Area and Street) *" required value="${esc(a.line)}" />
-                <input class="inp" id="addrCity" autocomplete="address-level2" placeholder="City / District / Town *" required value="${esc(a.city)}" />
-                <input class="inp" id="addrState" autocomplete="address-level1" placeholder="State *" required value="${esc(a.state)}" />
+                <input class="inp addr-span" id="addrName" name="name" autocomplete="name" placeholder="Name" value="${esc(a.name)}" />
+                <input class="inp addr-span" id="addrPhone" name="tel" autocomplete="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number" value="${esc(a.phone)}" />
+                <input class="inp" id="addrPin" name="postal-code" autocomplete="postal-code" inputmode="numeric" maxlength="6" placeholder="Pincode" value="${esc(a.pincode)}" />
+                <input class="inp" id="addrLocality" autocomplete="address-level3" placeholder="Locality" value="${esc(a.locality)}" />
+                <input class="inp addr-span" id="addrLine" name="street-address" autocomplete="street-address" placeholder="Address (Area and Street)" value="${esc(a.line)}" />
+                <input class="inp" id="addrCity" autocomplete="address-level2" placeholder="City / District / Town" value="${esc(a.city)}" />
+                <input class="inp" id="addrState" autocomplete="address-level1" placeholder="State" value="${esc(a.state)}" />
               </div>
-              <p class="muted">All fields are required.</p>
+              <p class="muted">Address details are optional for this demo checkout.</p>
             </div>
             <p class="eta-hint">Estimated delivery: <b>${deliveryEta()}</b></p>
             <div class="chk-cta"><button type="button" class="btn-deliver" id="deliverHere">Continue</button></div>
@@ -1037,21 +1037,6 @@
         const line = val("addrLine");
         const city = val("addrCity");
         const st = val("addrState");
-        const checks = [
-          ["addrName", name.length >= 2, "Please enter your name"],
-          ["addrPhone", /^[6-9]\d{9}$/.test(phone), "Please enter a valid 10-digit mobile number"],
-          ["addrPin", /^[1-9]\d{5}$/.test(pincode), "Please enter a valid 6-digit pincode"],
-          ["addrLocality", !!locality, "Please enter your locality"],
-          ["addrLine", !!line, "Please enter your address"],
-          ["addrCity", !!city, "Please enter your city"],
-          ["addrState", !!st, "Please enter your state"]
-        ];
-        checks.forEach(([id, ok]) => document.getElementById(id).classList.toggle("inp-err", !ok));
-        const firstBad = checks.find(([, ok]) => !ok);
-        if (firstBad) {
-          document.getElementById(firstBad[0]).focus();
-          return toast(firstBad[2]);
-        }
         state.address = {
           name,
           phone,
