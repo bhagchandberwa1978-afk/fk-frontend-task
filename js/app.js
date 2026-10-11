@@ -4,10 +4,11 @@
     if (!p) return p;
     if (p.bbd) return p;
     const mrp = p.mrp || p.price;
-    const next = Object.assign({}, p, { mrp: mrp, price: Math.round(mrp * 0.5), bbd: true });
+    const price = p.price != null ? p.price : Math.round(mrp * 0.5);
+    const next = Object.assign({}, p, { mrp: mrp, price: price, bbd: true });
     if (p.variants && p.variants.length) {
       next.variants = p.variants.map(function (v) {
-        return Object.assign({}, v, { price: Math.round((v.price || mrp) * 0.5) });
+        return Object.assign({}, v, { price: v.price != null ? v.price : Math.round((v.price || mrp) * 0.5) });
       });
     }
     return next;
@@ -50,12 +51,24 @@
     sessionStorage.setItem("fk-checkout", JSON.stringify(state.checkoutItems || []));
     sessionStorage.setItem("fk-checkout-mode", state.checkoutMode || "buynow");
   }
+  function normalizeCheckoutItems(items) {
+    const clean = (items || [])
+      .map((c) => ({
+        id: c && c.id,
+        qty: Number(c && c.qty) || 1,
+        offer: c && c.offer ? String(c.offer) : ""
+      }))
+      .filter((c) => c.id);
+    if (!clean.length) return [];
+    if (clean.length > 1) {
+      toast("One product at a time. Only the first item will be checked out.");
+      return [clean[0]];
+    }
+    return clean;
+  }
   function startCheckout(items, mode) {
-    state.checkoutItems = (items || []).map((c) => ({
-      id: c.id,
-      qty: c.qty || 1,
-      offer: c.offer || ""
-    }));
+    const clean = normalizeCheckoutItems(items);
+    state.checkoutItems = clean;
     state.checkoutMode = mode || "buynow";
     state.payDone = false;
     state.chkStep = 1;
@@ -357,7 +370,7 @@
     return `<a class="mini-card" href="/product/${p.id}">
       <img src="${p.img}" alt="${esc(p.name)}" />
       <div class="n">${esc(p.name)}</div>
-      <div class="p">${inr(p.price)}${p.mrp ? ` <span style="color:#388e3c">${discount(p)}% off</span>` : ""}</div>
+      <div class="p">${p.mrp ? `<span class="was">${inr(p.mrp)}</span> ` : ""}${inr(p.price)}${p.mrp ? ` <span style="color:#388e3c">${discount(p)}% off</span>` : ""}</div>
     </a>`;
   }
 
@@ -468,29 +481,17 @@
   }
 
   function productGallery(p) {
+    /* Only this product's own images — never pad with other products */
     const out = [];
     const add = (src) => {
       if (src && out.indexOf(src) === -1) out.push(src);
     };
     add(p.img);
     (p.images || []).forEach(add);
-    (p.colors || []).forEach((c) => add(c.img && c.img.replace("/80/110/", "/416/416/")));
-    if (out.length < 4) {
-      ALL.filter((x) => x.brand === p.brand && x.id !== p.id).forEach((x) => {
-        if (out.length >= 4) return;
-        add(x.img);
-        (x.images || []).forEach((s) => {
-          if (out.length < 4) add(s);
-        });
-      });
-    }
-    if (out.length < 4) {
-      ALL.filter((x) => x.category === p.category && x.id !== p.id).forEach((x) => {
-        if (out.length >= 4) return;
-        add(x.img);
-      });
-    }
-    return out.slice(0, 4);
+    (p.colors || []).forEach((c) => {
+      if (c && c.id === p.id) add(c.img && c.img.replace("/80/110/", "/416/416/"));
+    });
+    return out;
   }
 
   function productView(id, bbd) {
@@ -1247,7 +1248,11 @@
     if (place) {
       place.addEventListener("click", () => {
         if (!state.cart.length) return toast("Cart is empty");
-        startCheckout(state.cart, "cart");
+        const first = state.cart[0];
+        if (state.cart.length > 1) {
+          toast("Checkout is one product at a time. Proceeding with the first item.");
+        }
+        startCheckout([first], "cart");
       });
     }
     document.querySelectorAll("[data-dot]").forEach((el) => {

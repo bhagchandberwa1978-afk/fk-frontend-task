@@ -240,6 +240,7 @@ img { max-width: 100%; display: block; }
 .mini-card img { height: 140px; object-fit: contain; margin: 0 auto; }
 .mini-card .n { font-size: 13px; margin-top: 8px; height: 34px; overflow: hidden; }
 .mini-card .p { color: var(--green); font-weight: 700; font-size: 13px; }
+.mini-card .p .was { color: var(--muted); text-decoration: line-through; font-weight: 400; margin-right: 4px; }
 
 /* listing */
 .listing-wrap {

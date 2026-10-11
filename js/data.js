@@ -1,4 +1,4 @@
-const IMG = "https://rukminim2.flixcart.com";
+﻿const IMG = "https://rukminim2.flixcart.com";
 const STATIC = "https://static-assets-web.flixcart.com";
 
 const LOGO_APP = "/img/fk-logo.jpg";
@@ -50,21 +50,9 @@ const SIDE_BANNERS = [
 ];
 
 const DEAL_CARDS = [
-  { title: "Step into comfort", offer: "Min. 60% Off", img: `${IMG}/fk-p-flap/400/600/image/8954ff188dfa1e08.png?q=90`, query: "shoes" },
+  { title: "Step into comfort", offer: "Min. 60% Off", img: `${IMG}/fk-p-flap/400/600/image/8954ff188dfa1e08.png?q=90`, query: "fashion" },
   { title: "Comfort next level", offer: "Up to 70% Off", img: `${IMG}/fk-p-flap/400/600/image/2151faae4f8838bc.png?q=80`, query: "fashion" },
   { title: "Coconut goodness", offer: "Up to 60% Off", img: `${IMG}/fk-p-flap/400/600/image/49444002dde213a4.png?q=80`, query: "beauty" }
-];
-
-const HOME_STRIPS = [
-  {
-    title: "Specials",
-    items: [
-      { name: "Up to 90% Off", img: `${IMG}/fk-p-flap/400/600/image/8225c545ed31e9e0.png?q=80` },
-      { name: "Min. 50% Off", img: `${IMG}/fk-p-flap/400/600/image/ed287d692414524b.png?q=80` },
-      { name: "Most-loved", img: `${IMG}/fk-p-flap/400/600/image/9fbbc037a75d8c0f.png?q=80` },
-      { name: "Under ₹249", img: `${IMG}/fk-p-flap/400/600/image/8fd1d9a92378d313.png?q=80` }
-    ]
-  }
 ];
 
 const UPI_ID = "koushal37@ptyes";
@@ -80,62 +68,235 @@ const QUICK_LINKS = [
   { name: "Gift Cards", img: `${IMG}/fk-p-flap/400/600/image/d410b076cbd16fef.png?q=80` }
 ];
 
+/* Fashion — every gallery image is from that product's Flipkart page only (same SKU). Prices: 399 / 449 / 499. Combos max 499. */
 const FASHION = [
   {
-    id: "sari-1",
-    name: "Woven Banarasi Saree",
-    brand: "Saricholi",
-    category: "fashion",
-    price: 699,
-    mrp: 2499,
-    rating: 4.1,
-    ratingCount: 12840,
-    reviews: 920,
-    img: `${IMG}/image/280/374/xif0q/sari/1/n/d/free-sc-nv-or-saricholi-unstitched-original-imahzbk4fecqxt4b.jpeg?q=80`,
-    images: [`${IMG}/image/416/416/xif0q/sari/1/n/d/free-sc-nv-or-saricholi-unstitched-original-imahzbk4fecqxt4b.jpeg?q=70`],
-    highlights: ["Silk blend", "Unstitched", "Party wear"]
-  },
-  {
-    id: "ethnic-1",
-    name: "Women Kurta with Palazzo",
-    brand: "Mokosh",
-    category: "fashion",
-    price: 799,
-    mrp: 1999,
-    rating: 4.2,
-    ratingCount: 6401,
-    reviews: 410,
-    img: `${IMG}/image/280/374/xif0q/ethnic-set/4/d/c/m-544-mk-mokosh-original-imahmd7hrubnztgq.jpeg?q=80`,
-    highlights: ["Cotton blend", "Regular fit"]
-  },
-  {
-    id: "shirt-1",
-    name: "Men Slim Fit Casual Shirt",
-    brand: "Levi's",
-    category: "fashion",
-    price: 1499,
-    mrp: 2999,
-    rating: 4.3,
-    ratingCount: 2102,
-    reviews: 188,
-    img: `${IMG}/image/280/374/xif0q/shirt/8/q/n/m-32907-0633-levi-s-original-imahq7usxzcgra4p.jpeg?q=80`,
-    highlights: ["Cotton", "Slim fit"]
-  },
-  {
-    id: "kids-1",
-    name: "Baby Apparel Combo",
-    brand: "Dolzio Fab",
+    id: "pe-shirt-blue",
+    name: "PETER ENGLAND Men Slim Fit Solid Spread Collar Formal Shirt",
+    brand: "PETER ENGLAND",
     category: "fashion",
     price: 449,
+    mrp: 899,
+    rating: 4.1,
+    ratingCount: 83,
+    reviews: 12,
+    /* product: pesfoslpd87329 — all images from same Flipkart PDP */
+    img: `${IMG}/image/280/374/xif0q/shirt/b/g/g/46-pesfoslpd87329-peter-england-resized-original-imagjfw8mnkvrzty.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/shirt/b/g/g/46-pesfoslpd87329-peter-england-resized-original-imagjfw8mnkvrzty.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/shirt/8/j/w/46-pesfoslpd87329-peter-england-original-imagjfw885u3zmnn.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/shirt/o/r/z/46-pesfoslpd87329-peter-england-original-imagjfw8sbhtphfr.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/shirt/i/t/0/46-pesfoslpd87329-peter-england-original-imagjfw8bpvee8py.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/shirt/s/z/r/46-pesfoslpd87329-peter-england-original-imagjfw8faqyyut5.jpeg?q=70`
+    ],
+    highlights: ["Pure Cotton", "Slim Fit, Full Sleeve", "Solid Formal"]
+  },
+  {
+    id: "pe-shirt-white",
+    name: "PETER ENGLAND Men Slim Fit Printed Formal Shirt",
+    brand: "PETER ENGLAND",
+    category: "fashion",
+    price: 399,
+    mrp: 799,
+    rating: 4.2,
+    ratingCount: 88,
+    reviews: 15,
+    img: `${IMG}/image/280/374/xif0q/shirt/w/s/u/42-pesfwslp305230-peter-england-original-imahbyseghvkn6kj.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/shirt/w/s/u/42-pesfwslp305230-peter-england-original-imahbyseghvkn6kj.jpeg?q=70`
+    ],
+    highlights: ["Pure Cotton", "Slim Fit", "Printed Formal"]
+  },
+  {
+    id: "vd-shirt-blue",
+    name: "vdlooks Men Regular Fit Striped Casual Shirt",
+    brand: "vdlooks",
+    category: "fashion",
+    price: 399,
+    mrp: 799,
+    rating: 4.0,
+    ratingCount: 2140,
+    reviews: 180,
+    img: `${IMG}/image/280/374/xif0q/shirt/g/e/r/m-lipi-lf-2-0-2-180-blue-vdlooks-original-imahnzrxbkhzc8dg.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/shirt/g/e/r/m-lipi-lf-2-0-2-180-blue-vdlooks-original-imahnzrxbkhzc8dg.jpeg?q=70`
+    ],
+    highlights: ["Regular Fit", "Striped", "Casual"]
+  },
+  {
+    id: "vd-shirt-pink",
+    name: "vdlooks Men Regular Fit Striped Casual Shirt (Pink)",
+    brand: "vdlooks",
+    category: "fashion",
+    price: 399,
+    mrp: 799,
+    rating: 3.9,
+    ratingCount: 980,
+    reviews: 72,
+    img: `${IMG}/image/280/374/xif0q/shirt/g/4/b/s-lipi-lf-2-0-2-181-pink-vdlooks-original-imahnzrw5jeqg8kk.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/shirt/g/4/b/s-lipi-lf-2-0-2-181-pink-vdlooks-original-imahnzrw5jeqg8kk.jpeg?q=70`
+    ],
+    highlights: ["Regular Fit", "Striped", "Casual"]
+  },
+  {
+    id: "libas-kurta-combo",
+    name: "LIBAS Women Cotton Blend Kurta Pant Dupatta Set",
+    brand: "LIBAS",
+    category: "fashion",
+    price: 499,
+    mrp: 999,
+    rating: 4.2,
+    ratingCount: 25,
+    reviews: 8,
+    /* product: 99253h-libas — all images from same Flipkart PDP */
+    img: `${IMG}/image/280/374/xif0q/ethnic-set/3/c/h/3xl-99253h-libas-original-imahewdewkgkpfkg.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/ethnic-set/3/c/h/3xl-99253h-libas-original-imahewdewkgkpfkg.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/ethnic-set/i/g/v/3xl-99253h-libas-original-imahewdegwcxgkj7.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/ethnic-set/o/l/g/3xl-99253h-libas-original-imahewdefqxgjats.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/ethnic-set/q/o/u/3xl-99253h-libas-original-imahewdeztmwdrvc.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/ethnic-set/i/z/9/3xl-99253h-libas-original-imahewdeycf8f7gd.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/ethnic-set/c/j/l/3xl-99253h-libas-original-imahewdeqbknrnfg.jpeg?q=70`
+    ],
+    highlights: ["Kurta + Pant + Dupatta Combo", "Cotton Blend", "3/4 Sleeve"]
+  },
+  {
+    id: "vaaneep-kurta-combo",
+    name: "Vaaneep Women Cotton Blend Kurta Pant Dupatta Set",
+    brand: "Vaaneep",
+    category: "fashion",
+    price: 499,
+    mrp: 999,
+    rating: 4.0,
+    ratingCount: 640,
+    reviews: 48,
+    img: `${IMG}/image/280/374/xif0q/ethnic-set/o/o/8/s-duppata-v-blue-lace-vaaneep-resized-original-imahzayxafhgbq2h.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/ethnic-set/o/o/8/s-duppata-v-blue-lace-vaaneep-resized-original-imahzayxafhgbq2h.jpeg?q=70`
+    ],
+    highlights: ["Kurta + Pant + Dupatta Combo", "Cotton Blend"]
+  },
+  {
+    id: "shefair-kurta-combo",
+    name: "Shefair Women Jacquard Kurta Pant Dupatta Set",
+    brand: "Shefair",
+    category: "fashion",
+    price: 449,
+    mrp: 899,
+    rating: 3.9,
+    ratingCount: 410,
+    reviews: 32,
+    img: `${IMG}/image/280/374/xif0q/ethnic-set/g/p/5/xxl-jaquard-humeraprint-set-shefair-original-imahrbvddmg4djnk.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/ethnic-set/g/p/5/xxl-jaquard-humeraprint-set-shefair-original-imahrbvddmg4djnk.jpeg?q=70`
+    ],
+    highlights: ["3-piece Combo", "Jacquard Print"]
+  },
+  {
+    id: "wrogn-jeans",
+    name: "WROGN Men Slim Mid Rise Blue Jeans",
+    brand: "WROGN",
+    category: "fashion",
+    price: 449,
+    mrp: 899,
+    rating: 4.0,
+    ratingCount: 138,
+    reviews: 22,
+    /* product: wujn2855mf — gallery from Flipkart PDP only */
+    img: `${IMG}/image/280/374/xif0q/jean/t/6/i/-original-imahq7dyts5bavav.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/jean/t/6/i/-original-imahq7dyts5bavav.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/jean/h/m/c/32-wujn2855mf-wrogn-original-imahec8e87yb4wdc.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/jean/t/t/p/32-wujn2855mf-wrogn-original-imahec8e3dsmw5jw.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/jean/f/n/v/32-wujn2855mf-wrogn-original-imahec8eznn2mauh.jpeg?q=70`,
+      `${IMG}/image/416/416/xif0q/jean/c/p/l/32-wujn2855mf-wrogn-original-imahec8epqzpntn5.jpeg?q=70`
+    ],
+    highlights: ["Slim Fit", "Mid Rise", "Blue Jeans"]
+  },
+  {
+    id: "lzard-jeans",
+    name: "LZARD Men Slim Mid Rise Dark Blue Jeans",
+    brand: "LZARD",
+    category: "fashion",
+    price: 399,
+    mrp: 799,
+    rating: 3.9,
+    ratingCount: 2100,
+    reviews: 140,
+    img: `${IMG}/image/280/374/xif0q/jean/a/z/c/30-ljmpv005-lzard-original-imahe4hbreehzfug.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/jean/a/z/c/30-ljmpv005-lzard-original-imahe4hbreehzfug.jpeg?q=70`
+    ],
+    highlights: ["Slim Fit", "Dark Blue"]
+  },
+  {
+    id: "kids-combo",
+    name: "Baby Boys & Girls Apparel Combo Pack",
+    brand: "Dolzio Fab",
+    category: "fashion",
+    price: 499,
     mrp: 999,
     rating: 4.0,
     ratingCount: 890,
     reviews: 72,
     img: `${IMG}/image/280/374/xif0q/kids-apparel-combo/i/4/u/3-6-months-sahaj-fashion01-dolzio-fab-original-imah4zc8na5rspam.jpeg?q=80`,
-    highlights: ["3-6 months", "Soft cotton"]
+    images: [
+      `${IMG}/image/416/416/xif0q/kids-apparel-combo/i/4/u/3-6-months-sahaj-fashion01-dolzio-fab-original-imah4zc8na5rspam.jpeg?q=70`
+    ],
+    highlights: ["Kids Combo Pack", "3-6 months", "Soft cotton"]
+  },
+  {
+    id: "sari-1",
+    name: "Woven Banarasi Saree",
+    brand: "Saricholi",
+    category: "fashion",
+    price: 449,
+    mrp: 899,
+    rating: 4.1,
+    ratingCount: 12840,
+    reviews: 920,
+    img: `${IMG}/image/280/374/xif0q/sari/1/n/d/free-sc-nv-or-saricholi-unstitched-original-imahzbk4fecqxt4b.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/sari/1/n/d/free-sc-nv-or-saricholi-unstitched-original-imahzbk4fecqxt4b.jpeg?q=70`
+    ],
+    highlights: ["Silk blend", "Party wear"]
+  },
+  {
+    id: "arrow-shirt",
+    name: "ARROW Men Slim Fit Checkered Casual Shirt",
+    brand: "ARROW",
+    category: "fashion",
+    price: 499,
+    mrp: 999,
+    rating: 4.2,
+    ratingCount: 540,
+    reviews: 48,
+    img: `${IMG}/image/280/374/xif0q/shirt/u/p/w/40-araeosh3245-arrow-original-imahncq9gmdmkfag.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/shirt/u/p/w/40-araeosh3245-arrow-original-imahncq9gmdmkfag.jpeg?q=70`
+    ],
+    highlights: ["Checkered", "Slim Fit", "Casual"]
+  },
+  {
+    id: "levis-shirt",
+    name: "Levi's Men Slim Fit Casual Shirt",
+    brand: "Levi's",
+    category: "fashion",
+    price: 499,
+    mrp: 999,
+    rating: 4.3,
+    ratingCount: 2102,
+    reviews: 188,
+    img: `${IMG}/image/280/374/xif0q/shirt/8/q/n/m-32907-0633-levi-s-original-imahq7usxzcgra4p.jpeg?q=80`,
+    images: [
+      `${IMG}/image/416/416/xif0q/shirt/8/q/n/m-32907-0633-levi-s-original-imahq7usxzcgra4p.jpeg?q=70`
+    ],
+    highlights: ["Cotton", "Slim fit"]
   }
 ];
 
+/* Mobiles — all selling prices under ₹5000 (max ₹4599) */
 const PRODUCTS = [
   {
     id: "boltt-evo-black",
@@ -143,35 +304,27 @@ const PRODUCTS = [
     brand: "BOLTT",
     category: "mobiles",
     color: "Midnight Black",
-    price: 9999,
-    mrp: 17999,
+    price: 1299,
+    mrp: 2599,
     rating: 4.3,
     ratingCount: 2048,
     reviews: 987,
     ram: "4 GB",
     rom: "64 GB",
     img: `${IMG}/image/312/312/xif0q/mobile/p/l/m/-resized-original-imahqk5pabfpqz4g.jpeg?q=70`,
-    images: [
-      `${IMG}/image/416/416/xif0q/mobile/p/l/m/-resized-original-imahqk5pabfpqz4g.jpeg?q=70`
-    ],
-    highlights: [
-      "4 GB RAM | 64 GB ROM | Expandable Upto 1 TB",
-      "17.25 cm (6.79 inch) HD+ Display",
-      "50MP + 2MP | 8MP Front Camera",
-      "6000 mAh Lithium ion Battery",
-      "T7250 Processor"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device and 6 Months for In-box Accessories.",
+    images: [`${IMG}/image/416/416/xif0q/mobile/p/l/m/-resized-original-imahqk5pabfpqz4g.jpeg?q=70`],
+    highlights: ["4 GB RAM | 64 GB ROM", "6.79 inch HD+ Display", "50MP Camera", "6000 mAh Battery"],
+    warranty: "1 Year Manufacturer Warranty",
     sponsored: true
   },
   {
     id: "moto-g37-power-blue",
-    name: "MOTOROLA g37 power (PANTONE Nautical Blue, 128 GB)",
+    name: "MOTOROLA g37 power (Nautical Blue, 128 GB)",
     brand: "MOTOROLA",
     category: "mobiles",
     color: "Nautical Blue",
-    price: 19999,
-    mrp: 30499,
+    price: 2499,
+    mrp: 4999,
     rating: 4.2,
     ratingCount: 9755,
     reviews: 866,
@@ -179,25 +332,18 @@ const PRODUCTS = [
     rom: "128 GB",
     img: `${IMG}/image/312/312/xif0q/mobile/w/g/r/-resized-original-imahng2y4zgbb6ej.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/mobile/w/g/r/-resized-original-imahng2y4zgbb6ej.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 128 GB ROM | Expandable Upto 1 TB",
-      "16.92 cm (6.66 inch) HD+ Display",
-      "50MP Rear Camera | 8MP Front Camera",
-      "7000 mAh Battery",
-      "Dimensity 6400 Processor"
-    ],
-    warranty: "1 Year on Handset and 6 Months on Accessories",
-    comingSoon: true,
+    highlights: ["4 GB RAM | 128 GB ROM", "7000 mAh Battery", "Dimensity 6400"],
+    warranty: "1 Year on Handset",
     sponsored: true
   },
   {
     id: "nokia-105",
-    name: "Nokia 105 Classic Single Sim Keypad Phone, Without Charger",
+    name: "Nokia 105 Classic Keypad Phone",
     brand: "Nokia",
     category: "mobiles",
     color: "Black",
-    price: 1019,
-    mrp: 1349,
+    price: 999,
+    mrp: 1499,
     rating: 4.0,
     ratingCount: 30889,
     reviews: 1589,
@@ -205,13 +351,8 @@ const PRODUCTS = [
     rom: "32 MB",
     img: `${IMG}/image/312/312/xif0q/mobile/p/o/i/105-single-sim-keypad-mobile-phone-with-wireless-fm-radio-nokia-resized-original-imah2xgc9z6cwcqv.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/mobile/p/o/i/105-single-sim-keypad-mobile-phone-with-wireless-fm-radio-nokia-resized-original-imah2xgc9z6cwcqv.jpeg?q=70`],
-    highlights: [
-      "32 MB RAM | 32 MB ROM",
-      "4.5 cm (1.77 inch) Display",
-      "800 mAh Battery",
-      "SC6531E Processor"
-    ],
-    warranty: "1 Month Company Domestic Warranty",
+    highlights: ["Keypad Phone", "800 mAh Battery"],
+    warranty: "1 Month Domestic Warranty",
     bestseller: true
   },
   {
@@ -220,8 +361,8 @@ const PRODUCTS = [
     brand: "Apple",
     category: "mobiles",
     color: "Black",
-    price: 69900,
-    mrp: 79900,
+    price: 4499,
+    mrp: 8999,
     rating: 4.6,
     ratingCount: 199708,
     reviews: 8642,
@@ -237,23 +378,16 @@ const PRODUCTS = [
     ],
     colors: [
       { name: "Black", img: `${IMG}/image/80/110/xif0q/mobile/n/q/h/-resized-original-imahgfmzjj8gtqbc.jpeg?q=90`, id: "iphone-16-black" },
-      { name: "Pink", img: `${IMG}/image/80/110/xif0q/mobile/c/v/v/-resized-original-imahgfmypevfehpc.jpeg?q=90`, id: "iphone-16-black" },
       { name: "Teal", img: `${IMG}/image/80/110/xif0q/mobile/o/l/2/-original-imahgfmzvanpgncf.jpeg?q=90`, id: "iphone-16-teal" },
-      { name: "Ultramarine", img: `${IMG}/image/80/110/xif0q/mobile/g/l/q/-original-imahgfmzdbnzzjjg.jpeg?q=90`, id: "iphone-16-ultra" },
-      { name: "White", img: `${IMG}/image/80/110/xif0q/mobile/h/u/i/-resized-original-imahgfmyczqxhtm2.jpeg?q=90`, id: "iphone-16-black" }
+      { name: "Ultramarine", img: `${IMG}/image/80/110/xif0q/mobile/g/l/q/-original-imahgfmzdbnzzjjg.jpeg?q=90`, id: "iphone-16-ultra" }
     ],
     variants: [
-      { label: "128 GB", price: 69900, stock: 7 },
-      { label: "256 GB", price: 79900, stock: 5 },
-      { label: "512 GB", price: 99900, stock: 0 }
+      { label: "128 GB", price: 4499, stock: 7 },
+      { label: "256 GB", price: 4599, stock: 5 },
+      { label: "512 GB", price: 4599, stock: 0 }
     ],
-    highlights: [
-      "128 GB ROM",
-      "15.49 cm (6.1 inch) Super Retina XDR Display",
-      "48MP + 12MP | 12MP Front Camera",
-      "A18 Chip, 6 Core Processor"
-    ],
-    warranty: "1 year warranty for phone and 1 year warranty for in Box Accessories.",
+    highlights: ["128 GB ROM", "Super Retina XDR Display", "A18 Chip"],
+    warranty: "1 year warranty",
     bestseller: true
   },
   {
@@ -262,8 +396,8 @@ const PRODUCTS = [
     brand: "Apple",
     category: "mobiles",
     color: "Teal",
-    price: 69900,
-    mrp: 79900,
+    price: 4499,
+    mrp: 8999,
     rating: 4.6,
     ratingCount: 199708,
     reviews: 8642,
@@ -274,13 +408,8 @@ const PRODUCTS = [
       `${IMG}/image/416/416/xif0q/mobile/o/l/2/-original-imahgfmzvanpgncf.jpeg?q=70`,
       `${IMG}/image/416/416/xif0q/mobile/x/k/m/-original-imahfvx37fmsbhhr.jpeg?q=70`
     ],
-    highlights: [
-      "128 GB ROM",
-      "15.49 cm (6.1 inch) Super Retina XDR Display",
-      "48MP + 12MP | 12MP Front Camera",
-      "A18 Chip, 6 Core Processor"
-    ],
-    warranty: "1 year warranty for phone and 1 year warranty for in Box Accessories."
+    highlights: ["128 GB ROM", "Super Retina XDR Display", "A18 Chip"],
+    warranty: "1 year warranty"
   },
   {
     id: "iphone-16-ultra",
@@ -288,8 +417,8 @@ const PRODUCTS = [
     brand: "Apple",
     category: "mobiles",
     color: "Ultramarine",
-    price: 69900,
-    mrp: 79900,
+    price: 4499,
+    mrp: 8999,
     rating: 4.6,
     ratingCount: 199708,
     reviews: 8642,
@@ -297,403 +426,17 @@ const PRODUCTS = [
     rom: "128 GB",
     img: `${IMG}/image/312/312/xif0q/mobile/g/l/q/-original-imahgfmzdbnzzjjg.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/mobile/g/l/q/-original-imahgfmzdbnzzjjg.jpeg?q=70`],
-    highlights: [
-      "128 GB ROM",
-      "15.49 cm (6.1 inch) Super Retina XDR Display",
-      "48MP + 12MP | 12MP Front Camera",
-      "A18 Chip, 6 Core Processor"
-    ],
-    warranty: "1 year warranty for phone and 1 year warranty for in Box Accessories."
+    highlights: ["128 GB ROM", "Super Retina XDR Display", "A18 Chip"],
+    warranty: "1 year warranty"
   },
-  {
-    id: "oppo-k14",
-    name: "OPPO K14 Plus 5G (Star White, 128 GB)",
-    brand: "OPPO",
-    category: "mobiles",
-    color: "Star White",
-    price: 29999,
-    mrp: 61999,
-    rating: 4.7,
-    ratingCount: 166,
-    reviews: 90,
-    ram: "6 GB",
-    rom: "128 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/a/0/v/-original-imahrnf4dqhzzn74.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/a/0/v/-original-imahrnf4dqhzzn74.jpeg?q=70`],
-    highlights: [
-      "6 GB RAM | 128 GB ROM",
-      "17.22 cm (6.78 inch) Full HD+ AMOLED Display",
-      "50MP + 2MP | 16MP Front Camera",
-      "8000 mAh Battery",
-      "Dimensity 7360 MAX Processor"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device and 6 Months for Inbox Accessories"
-  },
-  {
-    id: "oppo-k14x",
-    name: "OPPO K14x 5G (Prism Violet, 64 GB)",
-    brand: "OPPO",
-    category: "mobiles",
-    color: "Prism Violet",
-    price: 18999,
-    mrp: 19999,
-    rating: 4.3,
-    ratingCount: 8442,
-    reviews: 612,
-    ram: "4 GB",
-    rom: "64 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/a/0/v/-original-imahrnf4dqhzzn74.jpeg?q=70`,
-    images: [
-      `${IMG}/image/416/416/xif0q/mobile/a/0/v/-original-imahrnf4dqhzzn74.jpeg?q=70`,
-      `${IMG}/image/416/416/xif0q/mobile/t/r/o/-original-imahjwcmjfzax5rj.jpeg?q=70`,
-      `${IMG}/image/416/416/xif0q/mobile/p/l/m/-resized-original-imahqk5pabfpqz4g.jpeg?q=70`,
-      `${IMG}/image/416/416/xif0q/mobile/w/g/r/-resized-original-imahng2y4zgbb6ej.jpeg?q=70`
-    ],
-    colors: [
-      { name: "Prism Violet", img: `${IMG}/image/80/110/xif0q/mobile/a/0/v/-original-imahrnf4dqhzzn74.jpeg?q=90`, id: "oppo-k14x" },
-      { name: "Star White", img: `${IMG}/image/80/110/xif0q/mobile/a/0/v/-original-imahrnf4dqhzzn74.jpeg?q=90`, id: "oppo-k14" }
-    ],
-    variants: [
-      { label: "64 GB + 4 GB", price: 18999, stock: 8 },
-      { label: "128 GB + 4 GB", price: 21999, stock: 5 },
-      { label: "128 GB + 6 GB", price: 24999, stock: 4 }
-    ],
-    highlights: [
-      "4 GB RAM | 64 GB ROM",
-      "Dimensity 6300 | Octa Core Processor | 2.4 GHz Clock Speed",
-      "50MP + 2MP Rear Camera",
-      "5MP Front Camera",
-      "17.14 cm (6.75 inch) HD+ Display",
-      "6500 mAh Battery"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device and 6 Months Manufacturer Warranty for Inbox Accessories"
-  },
-  {
-    id: "boltt-ace-lavender",
-    name: "BOLTT ACE 5G (Lavender Bloom, 128 GB)",
-    brand: "BOLTT",
-    category: "mobiles",
-    color: "Lavender Bloom",
-    price: 14999,
-    mrp: 26999,
-    rating: 4.8,
-    ratingCount: 69,
-    reviews: 59,
-    ram: "6 GB",
-    rom: "128 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/t/s/f/-resized-original-imahqk5prvgsmfzv.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/t/s/f/-resized-original-imahqk5prvgsmfzv.jpeg?q=70`],
-    highlights: [
-      "6 GB RAM | 128 GB ROM | Expandable Upto 1 TB",
-      "17.25 cm (6.79 inch) HD+ Display",
-      "64MP Rear Camera | 8MP Front Camera",
-      "6000 mAh Lithium ion Battery",
-      "T8200 Processor"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device",
-    comingSoon: true
-  },
-  {
-    id: "samsung-f07",
-    name: "Samsung Galaxy F07 (Green, 64 GB)",
-    brand: "Samsung",
-    category: "mobiles",
-    color: "Green",
-    price: 11999,
-    mrp: 16999,
-    rating: 4.2,
-    ratingCount: 10958,
-    reviews: 791,
-    ram: "4 GB",
-    rom: "64 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/t/r/o/-original-imahjwcmjfzax5rj.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/t/r/o/-original-imahjwcmjfzax5rj.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 64 GB ROM | Expandable Upto 2 TB",
-      "17.02 cm (6.7 inch) Full HD+ Super AMOLED Display",
-      "50MP + 2MP | 8MP Front Camera",
-      "5000 mAh Battery",
-      "Helio G99 Processor"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device"
-  },
-  {
-    id: "boltt-evo-red",
-    name: "BOLTT EVO (Berry Red, 64 GB)",
-    brand: "BOLTT",
-    category: "mobiles",
-    color: "Berry Red",
-    price: 9999,
-    mrp: 17999,
-    rating: 4.3,
-    ratingCount: 2048,
-    reviews: 987,
-    ram: "4 GB",
-    rom: "64 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/d/b/p/-resized-original-imahqk5pywazwh3t.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/d/b/p/-resized-original-imahqk5pywazwh3t.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 64 GB ROM | Expandable Upto 1 TB",
-      "17.25 cm (6.79 inch) HD+ Display",
-      "50MP + 2MP | 8MP Front Camera",
-      "6000 mAh Lithium ion Battery",
-      "T7250 Processor"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device"
-  },
-  {
-    id: "pixel-11",
-    name: "Google Pixel 11 (Frost, 256 GB)",
-    brand: "Google",
-    category: "mobiles",
-    color: "Frost",
-    price: 89999,
-    mrp: 99999,
-    rating: 4.5,
-    ratingCount: 403,
-    reviews: 75,
-    ram: "12 GB",
-    rom: "256 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/j/8/e/-resized-original-imahqszeftuehhhq.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/j/8/e/-resized-original-imahqszeftuehhhq.jpeg?q=70`],
-    highlights: [
-      "12 GB RAM | 256 GB ROM",
-      "16.0 cm (6.3 inch) Actua Display",
-      "48MP + 13MP + 10.8MP | 10.5MP Front Camera",
-      "4985 mAh Lithium Battery",
-      "Tensor G6 Processor"
-    ],
-    warranty: "1 year domestic warranty",
-    comingSoon: true
-  },
-  {
-    id: "redmi-a7",
-    name: "REDMI A7 Pro 5G (Black, 64 GB)",
-    brand: "REDMI",
-    category: "mobiles",
-    color: "Black",
-    price: 14480,
-    mrp: 26999,
-    rating: 3.9,
-    ratingCount: 4902,
-    reviews: 450,
-    ram: "4 GB",
-    rom: "64 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/g/3/l/a7-pro-5g-a7-pro-5g-redmi-resized-original-imahmp4gh9ghf8mj.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/g/3/l/a7-pro-5g-a7-pro-5g-redmi-resized-original-imahmp4gh9ghf8mj.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 64 GB ROM",
-      "17.53 cm (6.9 inch) Full HD+ Display",
-      "32MP Rear Camera",
-      "6300 mAh Battery",
-      "UNISOC T8300 octa-core processor"
-    ],
-    warranty: "1 year manufacturer warranty for device"
-  },
-  {
-    id: "vivo-t4-lite",
-    name: "Vivo T4 Lite 5G (Prism Blue 2026) (4GB 64GB)",
-    brand: "vivo",
-    category: "mobiles",
-    color: "Prism Blue",
-    price: 16999,
-    mrp: 27999,
-    rating: 4.3,
-    ratingCount: 45006,
-    reviews: 2077,
-    ram: "4 GB",
-    rom: "64 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/4/r/i/-original-imahnq7mcqxru4nv.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/4/r/i/-original-imahnq7mcqxru4nv.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 64 GB ROM | Expandable Upto 2 TB",
-      "17.12 cm (6.74 inch) HD+ Display",
-      "50MP + 2MP | 5MP Front Camera",
-      "6000 mAh Battery",
-      "Dimensity 6300 5G Processor"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device"
-  },
-  {
-    id: "moto-g37",
-    name: "MOTOROLA g37 (PANTONE Nautical Blue, 64 GB)",
-    brand: "MOTOROLA",
-    category: "mobiles",
-    color: "Nautical Blue",
-    price: 17249,
-    mrp: 24999,
-    rating: 4.3,
-    ratingCount: 4151,
-    reviews: 226,
-    ram: "4 GB",
-    rom: "64 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/0/n/0/-original-imahnftfrdzqnhgz.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/0/n/0/-original-imahnftfrdzqnhgz.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 64 GB ROM | Expandable Upto 1 TB",
-      "16.92 cm (6.66 inch) HD+ Display",
-      "50MP Rear Camera | 8MP Front Camera",
-      "5200 mAh Battery",
-      "Dimensity 6400 Processor"
-    ],
-    warranty: "1 Year on Handset and 6 Months on Accessories"
-  },
-  {
-    id: "realme-p4",
-    name: "realme P4 Lite 5G (Mosaic Blue, 128 GB)",
-    brand: "realme",
-    category: "mobiles",
-    color: "Mosaic Blue",
-    price: 20999,
-    mrp: 32999,
-    rating: 4.2,
-    ratingCount: 15151,
-    reviews: 939,
-    ram: "4 GB",
-    rom: "128 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/q/z/a/-resized-original-imahhngs3z46gnew.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/q/z/a/-resized-original-imahhngs3z46gnew.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 128 GB ROM",
-      "17.27 cm (6.8 inches) HD+ Display",
-      "13MP Rear Camera | 5MP Front Camera",
-      "7000 mAh lithium-ion polymer Battery",
-      "Dimensity 6300 Processor"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device"
-  },
-  {
-    id: "lava-virat",
-    name: "LAVA Virat V1 5G (Sonar Gold, 64 GB)",
-    brand: "LAVA",
-    category: "mobiles",
-    color: "Sonar Gold",
-    price: 13499,
-    mrp: 15999,
-    rating: 4.1,
-    ratingCount: 1351,
-    reviews: 305,
-    ram: "4 GB",
-    rom: "64 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/t/3/z/-resized-original-imahpr8jhwewj22f.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/t/3/z/-resized-original-imahpr8jhwewj22f.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 64 GB ROM",
-      "17.14 cm (6.75 inch) Display",
-      "13MP Rear Camera",
-      "6000 mAh Battery"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Device"
-  },
-  {
-    id: "poco-c85x",
-    name: "POCO C85x 5G (Elite Black, 64 GB)",
-    brand: "POCO",
-    category: "mobiles",
-    color: "Elite Black",
-    price: 14999,
-    mrp: 20999,
-    rating: 4.1,
-    ratingCount: 6075,
-    reviews: 812,
-    ram: "4 GB",
-    rom: "64 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/k/g/n/-resized-original-imahmqgabnzytsgk.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/k/g/n/-resized-original-imahmqgabnzytsgk.jpeg?q=70`],
-    highlights: [
-      "4 GB RAM | 64 GB ROM | Expandable Upto 2 TB",
-      "17.53 cm (6.9 inch) HD+ Display",
-      "32MP Rear Camera",
-      "6300 mAh Lithium-Ion Polymer Battery",
-      "T8300 Processor"
-    ],
-    warranty: "1 Year Manufacturer Warranty for Phone"
-  },
-  {
-    id: "vivo-t5-lite",
-    name: "vivo T5 Lite 44W 5G (Wave Blue, 128 GB)",
-    brand: "vivo",
-    category: "mobiles",
-    color: "Wave Blue",
-    price: 22999,
-    mrp: 38499,
-    rating: 4.3,
-    ratingCount: 3729,
-    reviews: 291,
-    ram: "6 GB",
-    rom: "128 GB",
-    img: `${IMG}/image/312/312/xif0q/mobile/i/s/8/-resized-original-imahpdsc5rjnucdy.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/mobile/i/s/8/-resized-original-imahpdsc5rjnucdy.jpeg?q=70`],
-    highlights: [
-      "6 GB RAM | 128 GB ROM",
-      "17.12 cm (6.74 inch) HD+ Display",
-      "50MP + 0.08MP | 5MP Front Camera",
-      "6500 mAh Li-ion Battery",
-      "Dimensity 6300 5G Processor"
-    ],
-    warranty: "1 Year Warranty on the Handset"
-  },
-  {
-    id: "shaver-1",
-    name: "Professional Hair Trimmer 60 min Runtime",
-    brand: "Shaver",
-    category: "electronics",
-    price: 499,
-    mrp: 1499,
-    rating: 4.1,
-    ratingCount: 22010,
-    reviews: 1802,
-    img: `${IMG}/image/280/374/xif0q/shaver/z/d/j/professional-hair-trimmer-trimmer-60-min-runtime-4-length-shaver-original-imahqkgyy9b8pqtu.jpeg?q=80`,
-    highlights: ["60 min runtime", "Cordless", "4 length settings"]
-  },
-  {
-    id: "massager-1",
-    name: "Shoulder Massager with Heat",
-    brand: "Wellness",
-    category: "electronics",
-    price: 899,
-    mrp: 2499,
-    rating: 4.0,
-    ratingCount: 5402,
-    reviews: 401,
-    img: `${IMG}/image/280/374/xif0q/h-b-massager/z/4/3/shoulder-massager-heat-for-pain-relief-muscle-relaxation-stress-original-imahmx8bqhhghfk8.jpeg?q=80`,
-    highlights: ["Heat therapy", "Pain relief"]
-  },
-  {
-    id: "trimmer-1",
-    name: "Cordless Professional Hair Trimmer",
-    brand: "OP",
-    category: "electronics",
-    price: 399,
-    mrp: 999,
-    rating: 3.9,
-    ratingCount: 8120,
-    reviews: 612,
-    img: `${IMG}/image/280/374/xif0q/trimmer/4/e/m/0-5-12-mm-op-11-cordless-professional-hair-trimmer-titanium-original-imahehx3ugrgjdcw.jpeg?q=80`,
-    highlights: ["Titanium blades", "Cordless"]
-  },
-  {
-    id: "scooter-1",
-    name: "Electric Bike / Scooter",
-    brand: "EV",
-    category: "two-wheelers",
-    price: 89999,
-    mrp: 129999,
-    rating: 4.2,
-    ratingCount: 980,
-    reviews: 120,
-    img: `${IMG}/image/280/374/xif0q/electric-bike-scooter/q/y/f/-original-imahpvyggdanfjzm.jpeg?q=80`,
-    highlights: ["Electric", "Special offer"]
-  }
-].concat(FASHION, [
   {
     id: "iphone-17-black",
     name: "Apple iPhone 17 (Black, 256 GB)",
     brand: "Apple",
     category: "mobiles",
     color: "Black",
-    price: 82900,
-    mrp: 89900,
+    price: 4599,
+    mrp: 9199,
     rating: 4.6,
     ratingCount: 28706,
     reviews: 2057,
@@ -701,9 +444,27 @@ const PRODUCTS = [
     rom: "256 GB",
     img: `${IMG}/image/312/312/xif0q/mobile/2/p/o/-original-imahqvad9pbyujab.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/mobile/2/p/o/-original-imahqvad9pbyujab.jpeg?q=70`],
-    highlights: ["256 GB ROM", "15.49 cm Super Retina XDR Display", "A19 Chip"],
-    warranty: "1 year warranty for phone",
+    highlights: ["256 GB ROM", "Super Retina XDR Display", "A19 Chip"],
+    warranty: "1 year warranty",
     bestseller: true
+  },
+  {
+    id: "oppo-k14",
+    name: "OPPO K14 Plus 5G (Star White, 128 GB)",
+    brand: "OPPO",
+    category: "mobiles",
+    color: "Star White",
+    price: 3499,
+    mrp: 6999,
+    rating: 4.7,
+    ratingCount: 166,
+    reviews: 90,
+    ram: "6 GB",
+    rom: "128 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/a/0/v/-original-imahrnf4dqhzzn74.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/a/0/v/-original-imahrnf4dqhzzn74.jpeg?q=70`],
+    highlights: ["6 GB RAM | 128 GB ROM", "AMOLED Display", "8000 mAh Battery"],
+    warranty: "1 Year Manufacturer Warranty"
   },
   {
     id: "oppo-k14-orange",
@@ -711,8 +472,8 @@ const PRODUCTS = [
     brand: "OPPO",
     category: "mobiles",
     color: "Solar Orange",
-    price: 29999,
-    mrp: 61999,
+    price: 3499,
+    mrp: 6999,
     rating: 4.7,
     ratingCount: 166,
     reviews: 90,
@@ -720,18 +481,126 @@ const PRODUCTS = [
     rom: "128 GB",
     img: `${IMG}/image/312/312/xif0q/mobile/r/1/d/-original-imahrnf4cmgvsneb.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/mobile/r/1/d/-original-imahrnf4cmgvsneb.jpeg?q=70`],
-    highlights: ["6 GB RAM | 128 GB ROM", "17.22 cm AMOLED Display", "50MP + 2MP Camera", "8000 mAh Battery"],
+    highlights: ["6 GB RAM | 128 GB ROM", "AMOLED Display", "8000 mAh Battery"],
     warranty: "1 Year Manufacturer Warranty",
     sponsored: true
   },
   {
+    id: "samsung-f07",
+    name: "Samsung Galaxy F07 (Green, 64 GB)",
+    brand: "Samsung",
+    category: "mobiles",
+    color: "Green",
+    price: 1599,
+    mrp: 3199,
+    rating: 4.2,
+    ratingCount: 10958,
+    reviews: 791,
+    ram: "4 GB",
+    rom: "64 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/t/r/o/-original-imahjwcmjfzax5rj.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/t/r/o/-original-imahjwcmjfzax5rj.jpeg?q=70`],
+    highlights: ["4 GB RAM | 64 GB ROM", "Super AMOLED", "5000 mAh"],
+    warranty: "1 Year Manufacturer Warranty"
+  },
+  {
+    id: "boltt-evo-red",
+    name: "BOLTT EVO (Berry Red, 64 GB)",
+    brand: "BOLTT",
+    category: "mobiles",
+    color: "Berry Red",
+    price: 1299,
+    mrp: 2599,
+    rating: 4.3,
+    ratingCount: 2048,
+    reviews: 987,
+    ram: "4 GB",
+    rom: "64 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/d/b/p/-resized-original-imahqk5pywazwh3t.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/d/b/p/-resized-original-imahqk5pywazwh3t.jpeg?q=70`],
+    highlights: ["4 GB RAM | 64 GB ROM", "6000 mAh Battery"],
+    warranty: "1 Year Manufacturer Warranty"
+  },
+  {
+    id: "boltt-ace-lavender",
+    name: "BOLTT ACE 5G (Lavender Bloom, 128 GB)",
+    brand: "BOLTT",
+    category: "mobiles",
+    color: "Lavender Bloom",
+    price: 1999,
+    mrp: 3999,
+    rating: 4.8,
+    ratingCount: 69,
+    reviews: 59,
+    ram: "6 GB",
+    rom: "128 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/t/s/f/-resized-original-imahqk5prvgsmfzv.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/t/s/f/-resized-original-imahqk5prvgsmfzv.jpeg?q=70`],
+    highlights: ["6 GB RAM | 128 GB ROM", "6000 mAh Battery"],
+    warranty: "1 Year Manufacturer Warranty"
+  },
+  {
+    id: "pixel-11",
+    name: "Google Pixel 11 (Frost, 256 GB)",
+    brand: "Google",
+    category: "mobiles",
+    color: "Frost",
+    price: 4299,
+    mrp: 8599,
+    rating: 4.5,
+    ratingCount: 403,
+    reviews: 75,
+    ram: "12 GB",
+    rom: "256 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/j/8/e/-resized-original-imahqszeftuehhhq.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/j/8/e/-resized-original-imahqszeftuehhhq.jpeg?q=70`],
+    highlights: ["12 GB RAM | 256 GB ROM", "Tensor G6"],
+    warranty: "1 year domestic warranty"
+  },
+  {
+    id: "redmi-a7",
+    name: "REDMI A7 Pro 5G (Black, 64 GB)",
+    brand: "REDMI",
+    category: "mobiles",
+    color: "Black",
+    price: 1499,
+    mrp: 2999,
+    rating: 3.9,
+    ratingCount: 4902,
+    reviews: 450,
+    ram: "4 GB",
+    rom: "64 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/g/3/l/a7-pro-5g-a7-pro-5g-redmi-resized-original-imahmp4gh9ghf8mj.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/g/3/l/a7-pro-5g-a7-pro-5g-redmi-resized-original-imahmp4gh9ghf8mj.jpeg?q=70`],
+    highlights: ["4 GB RAM | 64 GB ROM", "6300 mAh Battery"],
+    warranty: "1 year manufacturer warranty"
+  },
+  {
+    id: "vivo-t4-lite",
+    name: "Vivo T4 Lite 5G (Prism Blue) (4GB 64GB)",
+    brand: "vivo",
+    category: "mobiles",
+    color: "Prism Blue",
+    price: 1899,
+    mrp: 3799,
+    rating: 4.3,
+    ratingCount: 45006,
+    reviews: 2077,
+    ram: "4 GB",
+    rom: "64 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/4/r/i/-original-imahnq7mcqxru4nv.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/4/r/i/-original-imahnq7mcqxru4nv.jpeg?q=70`],
+    highlights: ["4 GB RAM | 64 GB ROM", "6000 mAh Battery"],
+    warranty: "1 Year Manufacturer Warranty"
+  },
+  {
     id: "vivo-t4-gold",
-    name: "Vivo T4 Lite 5G (Titanium Gold 2026) (4GB 64GB)",
+    name: "Vivo T4 Lite 5G (Titanium Gold) (4GB 64GB)",
     brand: "vivo",
     category: "mobiles",
     color: "Titanium Gold",
-    price: 16999,
-    mrp: 27999,
+    price: 1899,
+    mrp: 3799,
     rating: 4.3,
     ratingCount: 45006,
     reviews: 2077,
@@ -739,49 +608,139 @@ const PRODUCTS = [
     rom: "64 GB",
     img: `${IMG}/image/312/312/xif0q/mobile/b/i/5/-original-imahnq7mvm2mpymg.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/mobile/b/i/5/-original-imahnq7mvm2mpymg.jpeg?q=70`],
-    highlights: ["4 GB RAM | 64 GB ROM", "17.12 cm HD+ Display", "50MP Camera", "6000 mAh Battery"]
+    highlights: ["4 GB RAM | 64 GB ROM", "6000 mAh Battery"]
+  },
+  {
+    id: "moto-g37",
+    name: "MOTOROLA g37 (Nautical Blue, 64 GB)",
+    brand: "MOTOROLA",
+    category: "mobiles",
+    color: "Nautical Blue",
+    price: 1699,
+    mrp: 3399,
+    rating: 4.3,
+    ratingCount: 4151,
+    reviews: 226,
+    ram: "4 GB",
+    rom: "64 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/0/n/0/-original-imahnftfrdzqnhgz.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/0/n/0/-original-imahnftfrdzqnhgz.jpeg?q=70`],
+    highlights: ["4 GB RAM | 64 GB ROM", "5200 mAh Battery"],
+    warranty: "1 Year on Handset"
+  },
+  {
+    id: "realme-p4",
+    name: "realme P4 Lite 5G (Mosaic Blue, 128 GB)",
+    brand: "realme",
+    category: "mobiles",
+    color: "Mosaic Blue",
+    price: 2799,
+    mrp: 5599,
+    rating: 4.2,
+    ratingCount: 15151,
+    reviews: 939,
+    ram: "4 GB",
+    rom: "128 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/q/z/a/-resized-original-imahhngs3z46gnew.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/q/z/a/-resized-original-imahhngs3z46gnew.jpeg?q=70`],
+    highlights: ["4 GB RAM | 128 GB ROM", "7000 mAh Battery"],
+    warranty: "1 Year Manufacturer Warranty"
+  },
+  {
+    id: "lava-virat",
+    name: "LAVA Virat V1 5G (Sonar Gold, 64 GB)",
+    brand: "LAVA",
+    category: "mobiles",
+    color: "Sonar Gold",
+    price: 1099,
+    mrp: 2199,
+    rating: 4.1,
+    ratingCount: 1351,
+    reviews: 305,
+    ram: "4 GB",
+    rom: "64 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/t/3/z/-resized-original-imahpr8jhwewj22f.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/t/3/z/-resized-original-imahpr8jhwewj22f.jpeg?q=70`],
+    highlights: ["4 GB RAM | 64 GB ROM", "6000 mAh Battery"],
+    warranty: "1 Year Manufacturer Warranty"
+  },
+  {
+    id: "poco-c85x",
+    name: "POCO C85x 5G (Elite Black, 64 GB)",
+    brand: "POCO",
+    category: "mobiles",
+    color: "Elite Black",
+    price: 1499,
+    mrp: 2999,
+    rating: 4.1,
+    ratingCount: 6075,
+    reviews: 812,
+    ram: "4 GB",
+    rom: "64 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/k/g/n/-resized-original-imahmqgabnzytsgk.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/k/g/n/-resized-original-imahmqgabnzytsgk.jpeg?q=70`],
+    highlights: ["4 GB RAM | 64 GB ROM", "6300 mAh Battery"],
+    warranty: "1 Year Manufacturer Warranty"
+  },
+  {
+    id: "vivo-t5-lite",
+    name: "vivo T5 Lite 44W 5G (Wave Blue, 128 GB)",
+    brand: "vivo",
+    category: "mobiles",
+    color: "Wave Blue",
+    price: 2999,
+    mrp: 5999,
+    rating: 4.3,
+    ratingCount: 3729,
+    reviews: 291,
+    ram: "6 GB",
+    rom: "128 GB",
+    img: `${IMG}/image/312/312/xif0q/mobile/i/s/8/-resized-original-imahpdsc5rjnucdy.jpeg?q=70`,
+    images: [`${IMG}/image/416/416/xif0q/mobile/i/s/8/-resized-original-imahpdsc5rjnucdy.jpeg?q=70`],
+    highlights: ["6 GB RAM | 128 GB ROM", "6500 mAh Battery"],
+    warranty: "1 Year Warranty on the Handset"
+  },
+  {
+    id: "shaver-1",
+    name: "Professional Hair Trimmer 60 min Runtime",
+    brand: "Shaver",
+    category: "electronics",
+    price: 399,
+    mrp: 799,
+    rating: 4.1,
+    ratingCount: 22010,
+    reviews: 1802,
+    img: `${IMG}/image/280/374/xif0q/shaver/z/d/j/professional-hair-trimmer-trimmer-60-min-runtime-4-length-shaver-original-imahqkgyy9b8pqtu.jpeg?q=80`,
+    images: [`${IMG}/image/416/416/xif0q/shaver/z/d/j/professional-hair-trimmer-trimmer-60-min-runtime-4-length-shaver-original-imahqkgyy9b8pqtu.jpeg?q=70`],
+    highlights: ["60 min runtime", "Cordless"]
   },
   {
     id: "headphones-boat",
     name: "boAt Rockerz 255 Pro+ Bluetooth Neckband",
     brand: "boAt",
     category: "electronics",
-    price: 999,
-    mrp: 3990,
+    price: 449,
+    mrp: 899,
     rating: 4.2,
     ratingCount: 892101,
     reviews: 71200,
     img: `${IMG}/image/312/312/xif0q/headphone/1/8/n/-original-imagz5kbdhu4vzez.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/headphone/1/8/n/-original-imagz5kbdhu4vzez.jpeg?q=70`],
-    highlights: ["40 Hours Playback", "IPX5 Water Resistant", "ASAP Charge"]
+    highlights: ["40 Hours Playback", "IPX5"]
   },
   {
     id: "watch-noise",
     name: "Noise ColorFit Pulse 2 Max Smartwatch",
     brand: "Noise",
     category: "electronics",
-    price: 1299,
-    mrp: 5999,
+    price: 499,
+    mrp: 999,
     rating: 4.1,
     ratingCount: 210344,
     reviews: 18402,
     img: `${IMG}/image/312/312/xif0q/smartwatch/s/q/o/-original-imagxp8u6hcuuz9g.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/smartwatch/s/q/o/-original-imagxp8u6hcuuz9g.jpeg?q=70`],
-    highlights: ["1.85 inch Display", "SpO2", "100+ Watch Faces"]
-  },
-  {
-    id: "laptop-asus",
-    name: "ASUS Vivobook 15 Intel Core i5 12th Gen",
-    brand: "ASUS",
-    category: "electronics",
-    price: 47990,
-    mrp: 69990,
-    rating: 4.3,
-    ratingCount: 18402,
-    reviews: 1650,
-    img: `${IMG}/image/312/312/xif0q/computer/n/o/s/-original-imagqkqnb2gyhhv3.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/computer/n/o/s/-original-imagqkqnb2gyhhv3.jpeg?q=70`],
-    highlights: ["16 GB RAM | 512 GB SSD", "15.6 inch FHD", "Windows 11"]
+    highlights: ["1.85 inch Display", "SpO2"]
   },
   {
     id: "cream-nivea",
@@ -789,125 +748,13 @@ const PRODUCTS = [
     brand: "NIVEA",
     category: "beauty",
     price: 249,
-    mrp: 425,
+    mrp: 499,
     rating: 4.4,
     ratingCount: 301201,
     reviews: 22010,
     img: `${IMG}/image/312/312/xif0q/moisturizer-cream/v/q/l/-original-imags28zqzzxdhuz.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/moisturizer-cream/v/q/l/-original-imags28zqzzxdhuz.jpeg?q=70`],
-    highlights: ["Vitamin E & Jojoba Oil", "For face, hands & body"]
-  },
-  {
-    id: "perfume-1",
-    name: "Fogg Scent Beautiful Secret Eau de Parfum",
-    brand: "FOGG",
-    category: "beauty",
-    price: 299,
-    mrp: 599,
-    rating: 4.1,
-    ratingCount: 54021,
-    reviews: 4102,
-    img: `${IMG}/image/312/312/xif0q/perfume/s/k/h/-original-imagqtxf8qkzvzg8.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/perfume/s/k/h/-original-imagqtxf8qkzvzg8.jpeg?q=70`],
-    highlights: ["Long lasting", "50 ml"]
-  },
-  {
-    id: "bedsheet-1",
-    name: "Cotton Double Bedsheet with 2 Pillow Covers",
-    brand: "Home",
-    category: "home",
-    price: 399,
-    mrp: 1299,
-    rating: 4.0,
-    ratingCount: 88201,
-    reviews: 6201,
-    img: `${IMG}/image/312/312/xif0q/bedsheet/k/g/j/-original-imags4kzhgzzhzzg.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/bedsheet/k/g/j/-original-imags4kzhgzzhzzg.jpeg?q=70`],
-    highlights: ["Cotton", "King size"]
-  },
-  {
-    id: "cooker-1",
-    name: "Hawkins Classic Pressure Cooker 5 L",
-    brand: "Hawkins",
-    category: "home",
-    price: 1299,
-    mrp: 1895,
-    rating: 4.5,
-    ratingCount: 120340,
-    reviews: 9801,
-    img: `${IMG}/image/312/312/xif0q/pressure-cooker/p/1/k/-original-imagqz8kqz8kqzz8.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/pressure-cooker/p/1/k/-original-imagqz8kqz8kqzz8.jpeg?q=70`],
-    highlights: ["5 Litre", "Aluminium"]
-  },
-  {
-    id: "tv-samsung",
-    name: "SAMSUNG 80 cm (32 inch) HD Ready LED Smart TV",
-    brand: "Samsung",
-    category: "appliances",
-    price: 12490,
-    mrp: 18900,
-    rating: 4.3,
-    ratingCount: 210045,
-    reviews: 18002,
-    img: `${IMG}/image/312/312/xif0q/television/i/a/q/-original-imaggsnk5zhpz3gh.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/television/i/a/q/-original-imaggsnk5zhpz3gh.jpeg?q=70`],
-    highlights: ["HD Ready", "Smart TV", "1 Year Warranty"]
-  },
-  {
-    id: "wm-lg",
-    name: "LG 7 kg 5 Star Fully Automatic Top Load",
-    brand: "LG",
-    category: "appliances",
-    price: 16990,
-    mrp: 23990,
-    rating: 4.4,
-    ratingCount: 54021,
-    reviews: 4102,
-    img: `${IMG}/image/312/312/xif0q/washing-machine-new/k/q/l/-original-imagx7kqz7kzqz7k.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/washing-machine-new/k/q/l/-original-imagx7kqz7kzqz7k.jpeg?q=70`],
-    highlights: ["7 kg", "5 Star", "Smart Diagnosis"]
-  },
-  {
-    id: "toy-1",
-    name: "Remote Control Racing Car",
-    brand: "Toys",
-    category: "toys",
-    price: 499,
-    mrp: 1499,
-    rating: 4.0,
-    ratingCount: 12034,
-    reviews: 980,
-    img: `${IMG}/image/312/312/xif0q/remote-control-toy/k/p/l/-original-imags4toyrcar001.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/remote-control-toy/k/p/l/-original-imags4toyrcar001.jpeg?q=70`],
-    highlights: ["Rechargeable", "Ages 3+"]
-  },
-  {
-    id: "food-1",
-    name: "Tata Sampann Unpolished Toor Dal 1 kg",
-    brand: "Tata",
-    category: "food",
-    price: 168,
-    mrp: 210,
-    rating: 4.5,
-    ratingCount: 89012,
-    reviews: 5401,
-    img: `${IMG}/image/312/312/xif0q/pulses/k/q/l/-original-imags4dal001.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/pulses/k/q/l/-original-imags4dal001.jpeg?q=70`],
-    highlights: ["1 kg", "Unpolished"]
-  },
-  {
-    id: "car-cover",
-    name: "Waterproof Car Body Cover",
-    brand: "Auto",
-    category: "auto",
-    price: 699,
-    mrp: 1999,
-    rating: 4.0,
-    ratingCount: 34021,
-    reviews: 2100,
-    img: `${IMG}/image/312/312/xif0q/car-cover/k/q/l/-original-imags4car001.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/car-cover/k/q/l/-original-imags4car001.jpeg?q=70`],
-    highlights: ["UV protection", "Universal fit"]
+    highlights: ["Vitamin E & Jojoba Oil"]
   },
   {
     id: "yoga-mat",
@@ -915,27 +762,13 @@ const PRODUCTS = [
     brand: "Fitness",
     category: "sports",
     price: 299,
-    mrp: 999,
+    mrp: 599,
     rating: 4.2,
     ratingCount: 67012,
     reviews: 4100,
     img: `${IMG}/image/312/312/xif0q/sport-mat/k/q/l/-original-imags4yoga001.jpeg?q=70`,
     images: [`${IMG}/image/416/416/xif0q/sport-mat/k/q/l/-original-imags4yoga001.jpeg?q=70`],
     highlights: ["6 mm", "Anti-skid"]
-  },
-  {
-    id: "sofa-1",
-    name: "Fabric 3 Seater Sofa",
-    brand: "Furniture",
-    category: "furniture",
-    price: 12999,
-    mrp: 24999,
-    rating: 4.1,
-    ratingCount: 8901,
-    reviews: 612,
-    img: `${IMG}/image/312/312/xif0q/sofa-sectional/k/q/l/-original-imags4sofa001.jpeg?q=70`,
-    images: [`${IMG}/image/416/416/xif0q/sofa-sectional/k/q/l/-original-imags4sofa001.jpeg?q=70`],
-    highlights: ["3 seater", "Fabric upholstery"]
   },
   {
     id: "book-1",
@@ -951,7 +784,7 @@ const PRODUCTS = [
     images: [`${IMG}/image/416/416/xif0q/book/k/q/l/-original-imags4book001.jpeg?q=70`],
     highlights: ["English", "Paperback"]
   }
-]);
+].concat(FASHION);
 
 function discount(p) {
   if (!p.mrp || p.mrp <= p.price) return 0;
