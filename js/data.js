@@ -45,7 +45,7 @@ const DEAL_CARDS = [
   { title: "Coconut goodness", offer: "Up to 60% Off", img: `${IMG}/fk-p-flap/400/600/image/49444002dde213a4.png?q=80`, query: "beauty" }
 ];
 
-const UPI_ID = "koushal37@ptyes";
+const UPI_ID = "paytm.s1x6rxv@pty";
 const UPI_NAME = "Koushal";
 
 const QUICK_LINKS = [
