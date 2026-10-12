@@ -1148,11 +1148,11 @@
     }
     const payUpi = document.getElementById("payUpi");
     if (payUpi) {
-      payUpi.addEventListener("click", () => toast("Opening UPI app for " + UPI_ID));
+      payUpi.addEventListener("click", () => toast(" " + UPI_ID));
     }
     const payUpiOther = document.getElementById("payUpiOther");
     if (payUpiOther) {
-      payUpiOther.addEventListener("click", () => toast("Opening UPI app for " + UPI_ID));
+      payUpiOther.addEventListener("click", () => toast(" " + UPI_ID));
     }
     const openQr = document.getElementById("openQr");
     if (openQr) {
