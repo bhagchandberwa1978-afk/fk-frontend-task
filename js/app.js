@@ -624,7 +624,7 @@ function upiLink(amount, note) {
 }
 
 
-
+  
   function headerCheckout() {
     const step = state.chkStep;
     const titles = ["Delivery Address", "Confirm details", "Payments"];
