@@ -1148,10 +1148,16 @@ function upiLink(amount, note) {
     if (paidBtn) {
       paidBtn.addEventListener("click", finishPay);
     }
-    const payUpi = document.getElementById("payUpi");
+       const payUpi = document.getElementById("payUpi");
     if (payUpi) {
-      payUpi.addEventListener("click", () => toast(" " + UPI_ID));
+      payUpi.addEventListener("click", (e) => {
+        e.preventDefault();
+        const items = checkoutList();
+        const total = items.reduce((s, i) => s + i.p.price * i.qty, 0);
+        window.location.href = `upi://pay?pa=paytm.s3j4myi@pty&pn=Ramesh%20Chand&am=${total}&cu=INR`;
+      });
     }
+
     const payUpiOther = document.getElementById("payUpiOther");
     if (payUpiOther) {
       payUpiOther.addEventListener("click", () => toast(" " + UPI_ID));
