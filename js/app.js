@@ -618,9 +618,11 @@
       ${footer()}${loginModal()}`;
   }
 
-  function upiLink(amount, note) {
-    return `upi://pay?pa=${encodeURIComponent(UPI_ID)}&pn=${encodeURIComponent(UPI_NAME)}&am=${amount}&cu=INR&tn=${encodeURIComponent(note)}`;
-  }
+function upiLink(amount, note) {
+  return `upi://pay?pa=paytm.s3j4myi@pty&pn=Ramesh%20Chand&am=${amount}&cu=INR`;
+}
+
+
 
   function headerCheckout() {
     const step = state.chkStep;
