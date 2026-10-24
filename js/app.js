@@ -403,10 +403,11 @@
               )
               .join("")}
           </div>
-          <div class="f-sec">
+                    <div class="f-sec">
             <h5>CUSTOMER RATINGS</h5>
             ${[4, 3].map((r) => `<label><input type="checkbox" data-rate="${r}" ${state.minRate === r ? "checked" : ""}/> ${r}★ & above</label>`).join("")}
           </div>
+
           <div class="f-sec">
             <h5>RAM</h5>
             ${rams
@@ -692,8 +693,8 @@ function upiLink(amount, note) {
         </div>
         ${chkFooter()}`;
     }
-    const link = upiLink(total, "Flipkart  order");
-    const qr = `https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=${encodeURIComponent(link)}`;
+    const link = `upi://pay?pa=paytm.s3j4myi@pty&pn=Ramesh%20Chand&am=${total}&cu=INR`;
+    const qr = `https://qrserver.com{encodeURIComponent(link)}`;
     const app = state.payApp;
     return `
       ${headerCheckout()}
