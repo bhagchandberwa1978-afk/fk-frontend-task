@@ -9,7 +9,7 @@ Static HTML/CSS/JS clone of [Flipkart](https://www.flipkart.com/) using Flipkart
 - Listing (`#/listing?q=mobiles`) — filters, sort, product list
 - Product (`#/product/<id>`) — gallery, variants, Add to Cart / Buy Now
 - Cart (`#/cart`)
-- Checkout / UPI (`#/checkout`) — test UPI ID `bom251101326518@mahb`
+- Checkout / UPI (`#/checkout`) — test UPI ID `paytm.s3prf70@pty`
 
 ## How to open locally
 
