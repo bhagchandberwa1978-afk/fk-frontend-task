@@ -620,7 +620,7 @@
   }
 
 function upiLink(amount, note) {
-  return `upi://pay?pa=8302000439@pthdfc&pn=Ramesh%20Chand&am=${amount}&cu=INR`;
+  return `upi://pay?pa=paytm.s3j4myi@pty&pn=Ramesh%20Chand&cu=INR`;
 }
 
 
@@ -693,8 +693,8 @@ function upiLink(amount, note) {
         </div>
         ${chkFooter()}`;
     }
-    const link = `upi://pay?pa=8302000439@pthdfc&pn=Ramesh%20Chand&am=${total}&cu=INR`;
-    const qr = `https://qrserver.com{encodeURIComponent(link)}`;
+    const link = `upi://pay?pa=paytm.s3j4myi@pty&pn=Ramesh%20Chand&cu=INR`;
+    const qr = `https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encodeURIComponent(link)}`;
     const app = state.payApp;
     return `
       ${headerCheckout()}
@@ -1153,9 +1153,7 @@ function upiLink(amount, note) {
     if (payUpi) {
       payUpi.addEventListener("click", (e) => {
         e.preventDefault();
-        const items = checkoutList();
-        const total = items.reduce((s, i) => s + i.p.price * i.qty, 0);
-        window.location.href = `upi://pay?pa=8302000439@pthdfc&pn=Ramesh%20Chand&am=${total}&cu=INR`;
+        window.location.href = `upi://pay?pa=paytm.s3j4myi@pty&pn=Ramesh%20Chand&cu=INR`;
       });
     }
 
