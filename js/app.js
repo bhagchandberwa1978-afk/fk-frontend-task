@@ -31,7 +31,7 @@
     minRate: 0,
     chkStep: 1,
     payMethod: "upi",
-    payApp: "paytm",
+    payApp: "phonepe",
     showQr: false,
     checkoutItems: JSON.parse(sessionStorage.getItem("fk-checkout") || "[]"),
     checkoutMode: sessionStorage.getItem("fk-checkout-mode") || "buynow",
@@ -76,7 +76,7 @@
     state.payDone = false;
     state.chkStep = 1;
     state.payMethod = "upi";
-    state.payApp = "paytm";
+    state.payApp = "phonepe";
     state.showQr = false;
     saveCheckout();
     go("/checkout");
@@ -663,6 +663,13 @@ function upiLink(amount, note) {
     return d.toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" });
   }
 
+  function appLink(app) {
+    const params = `pa=${UPI_ID}&pn=Ramesh%20Chand&cu=INR`;
+    if (app === "phonepe") return `phonepe://pay?${params}`;
+    if (app === "paytm") return `paytmmp://pay?${params}`;
+    return `upi://pay?${params}`;
+  }
+
   function payYellow(total, link) {
     return `<a class="btn-pay-yellow" href="${link}" id="payUpi">Pay ${inr(total)}</a>`;
   }
@@ -765,18 +772,6 @@ function upiLink(amount, note) {
             </div>
             <div class="fk-card upi-card">
               <div class="upi-head"><span class="upi-badge">UPI</span> UPI <span class="acc-chev">⌃</span></div>
-              <label class="upi-app ${app === "fkupi" ? "on" : ""}">
-                <input type="radio" name="payapp" data-pay-app="fkupi" ${app === "fkupi" ? "checked" : ""} />
-                <span>Flipkart UPI <em>New</em></span>
-                <img src="${LOGO_APP}" class="upi-logo" alt="" />
-              </label>
-              ${app === "fkupi" ? `<div class="pay-actions">${payYellow(total, link)}</div>` : ""}
-              <label class="upi-app ${app === "paytm" ? "on" : ""}">
-                <input type="radio" name="payapp" data-pay-app="paytm" ${app === "paytm" ? "checked" : ""} />
-                <span>Paytm</span>
-                <span class="paytm-logo">Paytm</span>
-              </label>
-              ${app === "paytm" ? `<div class="pay-actions">${payYellow(total, link)}</div>` : ""}
               <label class="upi-app ${app === "phonepe" ? "on" : ""}">
                 <input type="radio" name="payapp" data-pay-app="phonepe" ${app === "phonepe" ? "checked" : ""} />
                 <span class="upi-app-name">PhonePe</span>
@@ -785,7 +780,13 @@ function upiLink(amount, note) {
                   <text x="24" y="31" text-anchor="middle" fill="#fff" font-size="18" font-weight="700" font-family="Arial, sans-serif">पे</text>
                 </svg>
               </label>
-              ${app === "phonepe" ? `<div class="pay-actions">${payYellow(total, link)}</div>` : ""}
+              ${app === "phonepe" ? `<div class="pay-actions">${payYellow(total, appLink("phonepe"))}</div>` : ""}
+              <label class="upi-app ${app === "paytm" ? "on" : ""}">
+                <input type="radio" name="payapp" data-pay-app="paytm" ${app === "paytm" ? "checked" : ""} />
+                <span>Paytm</span>
+                <span class="paytm-logo">Paytm</span>
+              </label>
+              ${app === "paytm" ? `<div class="pay-actions">${payYellow(total, appLink("paytm"))}</div>` : ""}
               <a class="other-upi" href="${link}" id="payUpiOther">Pay with other UPI Apps ›</a>
               <p class="muted tiny">Offers not valid if chosen from here</p>
               <button type="button" class="scan-qr" id="openQr">Scan QR and Pay</button>
