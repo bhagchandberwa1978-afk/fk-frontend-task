@@ -32,7 +32,7 @@
     chkStep: 1,
     payMethod: "upi",
     payApp: "phonepe",
-    showQr: false,
+    showQr: true,
     checkoutItems: JSON.parse(sessionStorage.getItem("fk-checkout") || "[]"),
     checkoutMode: sessionStorage.getItem("fk-checkout-mode") || "buynow",
     address: {
@@ -77,7 +77,7 @@
     state.chkStep = 1;
     state.payMethod = "upi";
     state.payApp = "phonepe";
-    state.showQr = false;
+    state.showQr = true;
     saveCheckout();
     go("/checkout");
   }
